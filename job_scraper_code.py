@@ -460,15 +460,13 @@ def main():
     # Company URLs - ADD YOUR COMPANIES HERE
     companies = {
         "Stripe": "https://stripe.com/jobs/search",
-        "Notion": "https://www.notion.so/careers",
-        "Figma": "https://www.figma.com/careers/",
-        "Linear": "https://linear.app/careers",
-        "Vercel": "https://vercel.com/careers",
-        "OpenAI": "https://openai.com/careers/search",
+        "Notion": "https://www.notion.com/careers?department=product-management#open-positions",
+        "Figma": "https://www.figma.com/careers/#job-openings",
+        "Linear": "https://linear.app/careers#join-us",
+        "Vercel": "https://vercel.com/careers?function=Product",
+        "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
         "Anthropic": "https://www.anthropic.com/careers",
-        "Discord": "https://discord.com/careers",
-        "GitHub": "https://github.com/careers",
-        "Shopify": "https://www.shopify.com/careers/search",
+        "Discord": "https://discord.com/careers#all-jobs",
         # Add more companies here...
     }
     

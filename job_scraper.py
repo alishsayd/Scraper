@@ -37,7 +37,8 @@ class JobScraper:
             'product manager', 'product management', 'senior product manager',
             'principal product manager', 'product lead', 'product owner',
             'director of product', 'head of product', 'vp product', 'vp of product',
-            'group product manager', 'staff product manager'
+            'group product manager', 'staff product manager', 'product',
+            'pm ', ' pm', 'product strategist', 'product marketing manager'
         ]
         
         # Initialize files if they don't exist
@@ -87,6 +88,7 @@ class JobScraper:
         
         for pattern in excluded_url_patterns:
             if pattern in url.lower():
+                logger.debug(f"Excluded URL pattern found: {pattern} in {url}")
                 return False
         
         text = f"{title.lower()} {description.lower()}"
@@ -103,7 +105,12 @@ class JobScraper:
         
         has_exclude = any(keyword in text for keyword in exclude_keywords)
         
-        return has_pm_keyword and not has_exclude
+        # Debug logging
+        result = has_pm_keyword and not has_exclude
+        if not result:
+            logger.info(f"Filtered out '{title}': PM keyword={has_pm_keyword}, Exclude={has_exclude}")
+        
+        return result
 
     def parse_date_text(self, date_text: str) -> str:
         """Parse various date formats into standardized format"""
@@ -182,6 +189,7 @@ class JobScraper:
             logger.info(f"Fetching {url}")
             response = requests.get(url, headers=headers, timeout=30)
             response.raise_for_status()
+            logger.info(f"Got response: {response.status_code}, Content length: {len(response.text)} chars")
             
             soup = BeautifulSoup(response.content, 'html.parser')
             
@@ -204,6 +212,7 @@ class JobScraper:
             if not job_elements:
                 logger.info("No structured elements found, trying link-based approach")
                 all_links = soup.find_all('a', href=True)
+                logger.info(f"Found {len(all_links)} total links on page")
                 job_elements = []
                 
                 for link in all_links:
@@ -230,10 +239,14 @@ class JobScraper:
                     title = re.sub(r'\s+', ' ', title)  # Remove extra whitespace
                     title = title.split('\n')[0].strip()  # Take first line only
                     
+                    # Log what title we extracted
+                    logger.debug(f"Extracted title: '{title}'")
+                    
                     # Skip if title is too generic, empty, or not relevant
                     if (len(title) < 5 or 
                         title.lower() in ['jobs', 'careers', 'apply', 'view all', 'see all', 'more'] or
                         len(title) > 200):
+                        logger.debug(f"Skipping generic title: '{title}'")
                         continue
                     
                     # Extract location
@@ -280,8 +293,14 @@ class JobScraper:
                     # Extract date posted
                     date_posted = self.extract_date_posted(element)
                     
+                    # Debug: Log what we found
+                    logger.info(f"Found potential job: '{title}' at {company}")
+                    
                     # Check if it's a Product Management role
-                    if self.is_product_management_job(title, job_url, description):
+                    is_pm_job = self.is_product_management_job(title, job_url, description)
+                    logger.info(f"PM Filter Result: '{title}' -> {is_pm_job}")
+                    
+                    if is_pm_job:
                         job = {
                             'company': company,
                             'title': title,
@@ -418,7 +437,7 @@ def main():
     
     # Company URLs - Updated with your specific targets
     companies = {
-        "Stripe": "https://stripe.com/jobs/search?teams=Climate&teams=Connect&teams=Mobile&teams=Terminal",
+        "Stripe": "https://stripe.com/jobs/search",
         "Notion": "https://www.notion.com/careers?department=product-management#open-positions",
         "Figma": "https://www.figma.com/careers/#job-openings",
         "Linear": "https://linear.app/careers#join-us",
@@ -426,7 +445,8 @@ def main():
         "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
         "Anthropic": "https://www.anthropic.com/jobs?team=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
-        "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
+        # Add Google if you want
+        # "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
     }
     
     try:

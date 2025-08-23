@@ -465,7 +465,7 @@ def main():
         "Linear": "https://linear.app/careers#join-us",
         "Vercel": "https://vercel.com/careers?function=Product",
         "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
-        "Anthropic": "https://www.anthropic.com/careers",
+        "Anthropic": "https://www.anthropic.com/jobs?team=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
         # Add more companies here...
     }

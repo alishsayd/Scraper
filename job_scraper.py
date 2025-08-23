@@ -343,18 +343,23 @@ class JobScraper:
             # Save to JSON (complete data)
             with open(self.jobs_json, 'w') as f:
                 json.dump(all_jobs, f, indent=2)
+            logger.info(f"✅ Saved {len(all_jobs)} jobs to JSON")
             
             # Save to CSV (for easy viewing)
             with open(self.jobs_csv, 'w', newline='', encoding='utf-8') as f:
                 if all_jobs:
-                    writer = csv.DictWriter(f, fieldnames=all_jobs[0].keys())
+                    fieldnames = ['company', 'title', 'location', 'url', 'date_posted', 'date_found', 'hash', 'status']
+                    writer = csv.DictWriter(f, fieldnames=fieldnames)
                     writer.writeheader()
                     writer.writerows(all_jobs)
-            
-            logger.info(f"Saved {len(all_jobs)} jobs to files")
+                    logger.info(f"✅ Saved {len(all_jobs)} jobs to CSV")
+                else:
+                    logger.warning("⚠️ No jobs to save to CSV")
             
         except Exception as e:
-            logger.error(f"Error saving jobs: {e}")
+            logger.error(f"❌ Error saving jobs: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
 
     def update_stats(self, companies: Dict[str, str], new_jobs_count: int):
         """Update statistics file"""
@@ -445,7 +450,8 @@ def main():
         "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
         "Anthropic": "https://www.anthropic.com/jobs?team=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
-        "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
+        # Add Google if you want
+        # "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
     }
     
     try:

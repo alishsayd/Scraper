@@ -445,8 +445,7 @@ def main():
         "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
         "Anthropic": "https://www.anthropic.com/jobs?team=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
-        # Add Google if you want
-        # "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
+        "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
     }
     
     try:

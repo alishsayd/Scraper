@@ -418,7 +418,7 @@ def main():
     
     # Company URLs - Updated with your specific targets
     companies = {
-        "Stripe": "https://stripe.com/jobs/search",
+        "Stripe": "https://stripe.com/jobs/search?teams=Climate&teams=Connect&teams=Mobile&teams=Terminal",
         "Notion": "https://www.notion.com/careers?department=product-management#open-positions",
         "Figma": "https://www.figma.com/careers/#job-openings",
         "Linear": "https://linear.app/careers#join-us",
@@ -426,8 +426,7 @@ def main():
         "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
         "Anthropic": "https://www.anthropic.com/jobs?team=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
-        # Add Google if you want
-        # "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
+        "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
     }
     
     try:

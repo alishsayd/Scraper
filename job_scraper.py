@@ -49,8 +49,8 @@ class JobScraper:
             with open(self.jobs_csv, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
                 writer.writerow([
-                    'company', 'title', 'location', 'url', 'date_found', 
-                    'description', 'hash', 'status', 'date_applied'
+                    'company', 'title', 'location', 'url', 'date_posted', 
+                    'date_found', 'hash', 'status'
                 ])
                 
         if not self.jobs_json.exists():
@@ -71,8 +71,24 @@ class JobScraper:
         unique_string = f"{job['company']}{job['title']}{job['location']}"
         return hashlib.md5(unique_string.encode()).hexdigest()[:12]
 
-    def is_product_management_job(self, title: str, description: str = "") -> bool:
+    def is_product_management_job(self, title: str, url: str = "", description: str = "") -> bool:
         """Check if job title/description matches Product Management criteria"""
+        # Filter out non-job URLs first
+        excluded_url_patterns = [
+            '/product-managers/',  # General info pages
+            '/about-product',
+            '/what-is-product',
+            '/product-management-guide',
+            '/blog/',
+            '/resources/',
+            '/tools/',
+            '/templates/'
+        ]
+        
+        for pattern in excluded_url_patterns:
+            if pattern in url.lower():
+                return False
+        
         text = f"{title.lower()} {description.lower()}"
         
         # Must contain product management keywords
@@ -82,15 +98,80 @@ class JobScraper:
         exclude_keywords = [
             'software engineer', 'frontend', 'backend', 'developer', 'designer',
             'marketing', 'sales', 'customer success', 'support', 'analyst',
-            'intern', 'qa', 'test', 'devops', 'data scientist'
+            'intern', 'qa', 'test', 'devops', 'data scientist', 'recruiter'
         ]
         
         has_exclude = any(keyword in text for keyword in exclude_keywords)
         
         return has_pm_keyword and not has_exclude
 
-    def scrape_generic_jobs(self, company: str, url: str) -> List[Dict]:
-        """Generic job scraper that works for many job sites"""
+    def parse_date_text(self, date_text: str) -> str:
+        """Parse various date formats into standardized format"""
+        if not date_text:
+            return None
+            
+        date_text = date_text.lower().strip()
+        today = datetime.now()
+        
+        # Handle relative dates
+        if 'today' in date_text or '0 days ago' in date_text:
+            return today.strftime('%Y-%m-%d')
+        elif 'yesterday' in date_text or '1 day ago' in date_text:
+            return (today - timedelta(days=1)).strftime('%Y-%m-%d')
+        
+        # Handle "X days/weeks/months ago"
+        time_ago_match = re.search(r'(\d+)\s+(day|week|month)s?\s+ago', date_text)
+        if time_ago_match:
+            number = int(time_ago_match.group(1))
+            unit = time_ago_match.group(2)
+            
+            if unit == 'day':
+                date = today - timedelta(days=number)
+            elif unit == 'week':
+                date = today - timedelta(weeks=number)
+            elif unit == 'month':
+                date = today - timedelta(days=number * 30)  # Approximate
+            
+            return date.strftime('%Y-%m-%d')
+        
+        # Handle absolute dates (basic parsing)
+        date_match = re.search(r'(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})', date_text)
+        if date_match:
+            month, day, year = date_match.groups()
+            if len(year) == 2:
+                year = f"20{year}"
+            try:
+                date = datetime(int(year), int(month), int(day))
+                return date.strftime('%Y-%m-%d')
+            except ValueError:
+                pass
+        
+        return None
+
+    def extract_date_posted(self, element) -> str:
+        """Try to extract when the job was posted"""
+        # Look for common date patterns in the element text
+        element_text = element.get_text()
+        
+        # Common date patterns
+        date_patterns = [
+            r'(\d{1,2})\s+(days?|weeks?|months?)\s+ago',
+            r'(yesterday|today)',
+            r'(\d{1,2}[/-]\d{1,2}[/-]\d{2,4})',
+            r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+\d{2,4}'
+        ]
+        
+        for pattern in date_patterns:
+            match = re.search(pattern, element_text, re.I)
+            if match:
+                parsed_date = self.parse_date_text(match.group(0))
+                if parsed_date:
+                    return parsed_date
+        
+        return "Unknown"
+
+    def scrape_jobs(self, company: str, url: str) -> List[Dict]:
+        """Main job scraping function"""
         jobs = []
         
         try:
@@ -190,34 +271,31 @@ class JobScraper:
                         from urllib.parse import urljoin
                         job_url = urljoin(url, job_url)
                     
-                    # Extract description (if available)
+                    # Extract description (for filtering only)
                     desc_elem = element.find(class_=re.compile(r'description|summary|excerpt|snippet', re.I))
                     description = ""
                     if desc_elem:
                         description = desc_elem.get_text(strip=True)[:300]
-                    else:
-                        # Use element text as backup
-                        full_text = element.get_text(strip=True)
-                        if len(full_text) > len(title) + 20:
-                            description = full_text[len(title):300].strip()
+                    
+                    # Extract date posted
+                    date_posted = self.extract_date_posted(element)
                     
                     # Check if it's a Product Management role
-                    if self.is_product_management_job(title, description):
+                    if self.is_product_management_job(title, job_url, description):
                         job = {
                             'company': company,
                             'title': title,
                             'location': location,
                             'url': job_url or url,
-                            'description': description,
-                            'date_found': datetime.now().strftime('%Y-%m-%d %H:%M'),
+                            'date_posted': date_posted,
+                            'date_found': datetime.now().strftime('%Y-%m-%d'),
                             'status': 'Found',
-                            'date_applied': '',
                             'hash': ''
                         }
                         job['hash'] = self.create_job_hash(job)
                         jobs.append(job)
                         parsed_count += 1
-                        logger.info(f"Found PM job: {title} at {location}")
+                        logger.info(f"Found PM job: {title} at {location} (posted: {date_posted})")
                         
                 except Exception as e:
                     logger.debug(f"Error parsing job element: {e}")
@@ -229,125 +307,6 @@ class JobScraper:
             logger.error(f"Error scraping {company} ({url}): {e}")
             
         return jobs
-
-    def scrape_company_specific(self, company: str, url: str) -> List[Dict]:
-        """Company-specific scrapers for better accuracy"""
-        
-        # Add company-specific logic here based on the URL patterns
-        if 'greenhouse.io' in url:
-            return self.scrape_greenhouse(company, url)
-        elif 'lever.co' in url:
-            return self.scrape_lever(company, url)
-        elif 'workday' in url or 'myworkdayjobs' in url:
-            return self.scrape_workday(company, url)
-        elif 'jobs.ashbyhq.com' in url:
-            return self.scrape_ashby(company, url)
-        else:
-            return self.scrape_generic_jobs(company, url)
-
-    def scrape_greenhouse(self, company: str, url: str) -> List[Dict]:
-        """Scraper for Greenhouse-based job sites"""
-        jobs = []
-        try:
-            # Try the API endpoint first
-            if '/jobs' in url:
-                api_url = url.replace('/jobs', '/api/jobs')
-                headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                    'Accept': 'application/json'
-                }
-                
-                response = requests.get(api_url, headers=headers, timeout=30)
-                if response.status_code == 200:
-                    try:
-                        data = response.json()
-                        job_list = data.get('jobs', []) if isinstance(data, dict) else data
-                        
-                        for job_data in job_list:
-                            title = job_data.get('title', '')
-                            if self.is_product_management_job(title):
-                                location = "Unknown"
-                                if job_data.get('location'):
-                                    location = job_data['location'].get('name', 'Unknown')
-                                elif job_data.get('offices'):
-                                    offices = job_data['offices']
-                                    if offices:
-                                        location = offices[0].get('name', 'Unknown')
-                                
-                                job = {
-                                    'company': company,
-                                    'title': title,
-                                    'location': location,
-                                    'url': job_data.get('absolute_url', url),
-                                    'description': job_data.get('content', '')[:300],
-                                    'date_found': datetime.now().strftime('%Y-%m-%d %H:%M'),
-                                    'status': 'Found',
-                                    'date_applied': '',
-                                    'hash': ''
-                                }
-                                job['hash'] = self.create_job_hash(job)
-                                jobs.append(job)
-                        
-                        logger.info(f"Greenhouse API returned {len(jobs)} PM jobs")
-                        return jobs
-                        
-                    except json.JSONDecodeError:
-                        logger.warning("Greenhouse API returned invalid JSON, falling back to generic scraping")
-                
-        except Exception as e:
-            logger.warning(f"Greenhouse API failed: {e}, falling back to generic scraping")
-        
-        # Fallback to generic scraping
-        return self.scrape_generic_jobs(company, url)
-
-    def scrape_lever(self, company: str, url: str) -> List[Dict]:
-        """Scraper for Lever-based job sites"""
-        # Lever often has API endpoints too
-        try:
-            # Try API first
-            if 'jobs.lever.co' in url:
-                api_url = url.replace('jobs.lever.co', 'api.lever.co/v0/postings')
-                response = requests.get(api_url, timeout=30)
-                if response.status_code == 200:
-                    data = response.json()
-                    jobs = []
-                    
-                    for job_data in data:
-                        title = job_data.get('text', '')
-                        if self.is_product_management_job(title):
-                            location = job_data.get('categories', {}).get('location', 'Unknown')
-                            
-                            job = {
-                                'company': company,
-                                'title': title,
-                                'location': location,
-                                'url': job_data.get('hostedUrl', url),
-                                'description': job_data.get('description', '')[:300],
-                                'date_found': datetime.now().strftime('%Y-%m-%d %H:%M'),
-                                'status': 'Found',
-                                'date_applied': '',
-                                'hash': ''
-                            }
-                            job['hash'] = self.create_job_hash(job)
-                            jobs.append(job)
-                    
-                    if jobs:
-                        logger.info(f"Lever API returned {len(jobs)} PM jobs")
-                        return jobs
-        except Exception as e:
-            logger.warning(f"Lever API failed: {e}, falling back to generic scraping")
-        
-        return self.scrape_generic_jobs(company, url)
-
-    def scrape_workday(self, company: str, url: str) -> List[Dict]:
-        """Scraper for Workday-based job sites (these are tricky due to JavaScript)"""
-        # Workday sites are heavily JavaScript-based, so generic scraping might not work well
-        # But let's try anyway
-        return self.scrape_generic_jobs(company, url)
-
-    def scrape_ashby(self, company: str, url: str) -> List[Dict]:
-        """Scraper for Ashby-based job sites"""
-        return self.scrape_generic_jobs(company, url)
 
     def load_existing_jobs(self) -> Dict[str, Dict]:
         """Load existing jobs from JSON file"""
@@ -419,7 +378,7 @@ class JobScraper:
         for company, url in companies.items():
             logger.info(f"🔍 Scraping {company}...")
             try:
-                jobs = self.scrape_company_specific(company, url)
+                jobs = self.scrape_jobs(company, url)
                 
                 # Filter out existing jobs
                 truly_new = [job for job in jobs if job['hash'] not in existing_jobs]
@@ -457,18 +416,18 @@ class JobScraper:
 def main():
     """Main function for GitHub Actions"""
     
-    # Company URLs - ADD YOUR COMPANIES HERE
+    # Company URLs - Updated with your specific targets
     companies = {
-        "Stripe": "https://stripe.com/jobs/search?teams=Banking+as+a+Service&teams=Climate&teams=Connect&teams=Crypto&teams=Mobile&teams=Money+Movement+and+Storage&teams=New+Financial+Products&teams=Payments&teams=Platform&teams=Professional+Services&teams=Revenue+%26+Financial+Automation&teams=Stripe+Tax&teams=Terminal",
+        "Stripe": "https://stripe.com/jobs/search",
         "Notion": "https://www.notion.com/careers?department=product-management#open-positions",
-        "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
         "Figma": "https://www.figma.com/careers/#job-openings",
         "Linear": "https://linear.app/careers#join-us",
         "Vercel": "https://vercel.com/careers?function=Product",
         "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
-        "Anthropic": "https://www.anthropic.com/careers",
+        "Anthropic": "https://www.anthropic.com/jobs?team=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
-        # Add more companies here...
+        # Add Google if you want
+        # "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
     }
     
     try:
@@ -515,8 +474,9 @@ def create_html_report(data_dir: Path):
         .job-card {{ border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; }}
         .job-title {{ font-weight: bold; color: #333; margin-bottom: 5px; }}
         .job-meta {{ color: #666; font-size: 0.9em; }}
-        .job-desc {{ margin-top: 10px; color: #555; }}
-        .new-job {{ border-left: 4px solid #4CAF50; }}
+        .fresh-job {{ border-left: 4px solid #4CAF50; }}
+        .recent-job {{ border-left: 4px solid #FF9800; }}
+        .old-job {{ border-left: 4px solid #999; }}
         a {{ color: #0066cc; text-decoration: none; }}
         a:hover {{ text-decoration: underline; }}
     </style>
@@ -538,7 +498,7 @@ def create_html_report(data_dir: Path):
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>{len([j for j in jobs if j['date_found'].startswith(datetime.now().strftime('%Y-%m-%d'))])}</h2>
+            <h2>{len([j for j in jobs if j['date_found'] == datetime.now().strftime('%Y-%m-%d')])}</h2>
         </div>
     </div>
     
@@ -547,19 +507,44 @@ def create_html_report(data_dir: Path):
         
         # Add job cards (latest 50)
         for job in jobs[:50]:
-            is_new = job['date_found'].startswith(datetime.now().strftime('%Y-%m-%d'))
-            card_class = "job-card new-job" if is_new else "job-card"
+            is_today = job['date_found'] == datetime.now().strftime('%Y-%m-%d')
+            
+            # Determine job freshness based on date_posted
+            job_class = "job-card"
+            freshness_emoji = ""
+            
+            if job.get('date_posted') and job['date_posted'] != 'Unknown':
+                try:
+                    posted_date = datetime.strptime(job['date_posted'], '%Y-%m-%d')
+                    days_ago = (datetime.now() - posted_date).days
+                    
+                    if days_ago <= 3:
+                        job_class += " fresh-job"
+                        freshness_emoji = "🆕"
+                    elif days_ago <= 14:
+                        job_class += " recent-job" 
+                        freshness_emoji = "📅"
+                    else:
+                        job_class += " old-job"
+                        freshness_emoji = "📰"
+                except:
+                    job_class += " job-card"
+            
+            elif is_today:  # Fallback to found date if posted date unavailable
+                job_class += " fresh-job"
+                freshness_emoji = "🆕"
             
             html_content += f"""
-    <div class="{card_class}">
+    <div class="{job_class}">
         <div class="job-title">
             <a href="{job['url']}" target="_blank">{job['title']}</a>
-            {'🆕' if is_new else ''}
+            {freshness_emoji}
         </div>
         <div class="job-meta">
-            📍 {job['location']} | 🏢 {job['company']} | 📅 {job['date_found']} | Status: {job['status']}
+            📍 {job['location']} | 🏢 {job['company']} | 
+            {'📅 Posted: ' + job.get('date_posted', 'Unknown') + ' | ' if job.get('date_posted') != 'Unknown' else ''}
+            🔍 Found: {job['date_found']} | Status: {job['status']}
         </div>
-        <div class="job-desc">{job['description'][:200]}{'...' if len(job['description']) > 200 else ''}</div>
     </div>
 """
         

@@ -119,5 +119,95 @@
     "status": "Found",
     "date_applied": "",
     "hash": "705d94545610"
+  },
+  {
+    "company": "Notion",
+    "title": "Eng & Product",
+    "location": "Remote/Unknown",
+    "url": "https://www.notion.com/product/notion-for-product-development",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "b770676e7e4a"
+  },
+  {
+    "company": "Notion",
+    "title": "$10 Billion Productivity Startup Notion Wants To Build Your AI Everything App",
+    "location": "Remote/Unknown",
+    "url": "https://www.forbes.com/sites/kenrickcai/2024/04/11/10-billion-productivity-startup-notion-wants-to-build-your-ai-everything-app/",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "4459bcb7410e"
+  },
+  {
+    "company": "Figma",
+    "title": "Product development",
+    "location": "Remote/Unknown",
+    "url": "https://www.figma.com/product-development/",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "75ad35bd42d0"
+  },
+  {
+    "company": "Figma",
+    "title": "Customer storiesRead about leading product teams",
+    "location": "Remote/Unknown",
+    "url": "https://www.figma.com/customers/",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "f3402e83b78e"
+  },
+  {
+    "company": "Figma",
+    "title": "Content Strategist, Product",
+    "location": "Content Strategist, Product",
+    "url": "https://boards.greenhouse.io/figma/jobs/5546257004?gh_jid=5546257004",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "30872da49ea8"
+  },
+  {
+    "company": "Figma",
+    "title": "Director, Product - Product Foundations",
+    "location": "Director, Product",
+    "url": "https://boards.greenhouse.io/figma/jobs/5585360004?gh_jid=5585360004",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "d022a910113e"
+  },
+  {
+    "company": "Linear",
+    "title": "Product",
+    "location": "Remote/Unknown",
+    "url": "https://linear.app/features",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "d85101acfcf8"
+  },
+  {
+    "company": "Vercel",
+    "title": "Product Engineer \u2013 v0Hybrid - New York City, San FranciscoRead more",
+    "location": "New York City, San",
+    "url": "https://vercel.com/careers/product-engineer-v0-5466858004",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "e3e58b633998"
+  },
+  {
+    "company": "Vercel",
+    "title": "Senior Legal Counsel, Product and CommercialHybrid - San FranciscoRead more",
+    "location": "Senior Legal Counsel, Product",
+    "url": "https://vercel.com/careers/senior-legal-counsel-product-and-commercial-5540430004",
+    "date_posted": "Unknown",
+    "date_found": "2025-08-23",
+    "status": "Found",
+    "hash": "7ab32e28ccb2"
   }
 ]

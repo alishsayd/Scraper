@@ -1,0 +1,3 @@
+# Add this step to your workflow temporarily
+- name: Run diagnostics
+  run: python diagnose.py

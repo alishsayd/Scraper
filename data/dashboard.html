@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Search Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background: #f0f8ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .stats { display: flex; gap: 20px; margin-bottom: 20px; }
+        .stat-box { background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; flex: 1; }
+        .filters { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .filter-group { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        .job-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; transition: opacity 0.3s; }
+        .job-card.hidden { display: none; }
+        .job-title { font-weight: bold; color: #333; margin-bottom: 5px; }
+        .job-meta { color: #666; font-size: 0.9em; }
+        .fresh-job { border-left: 4px solid #4CAF50; }
+        .recent-job { border-left: 4px solid #FF9800; }
+        .old-job { border-left: 4px solid #999; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .results-info { color: #666; font-style: italic; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔎 Product Management Job Dashboard</h1>
+        <p>Last updated: 2025-08-24 10:42</p>
+    </div>
+    
+    <div class="stats">
+        <div class="stat-box">
+            <h3>📊 Total Jobs</h3>
+            <h2 id="total-jobs">24</h2>
+        </div>
+        <div class="stat-box">
+            <h3>🏢 Companies</h3>
+            <h2>9</h2>
+        </div>
+        <div class="stat-box">
+            <h3>🆕 Today's New Jobs</h3>
+            <h2>24</h2>
+        </div>
+    </div>
+    
+    <div class="filters">
+        <div class="filter-group">
+            <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
+            <select id="company-filter" onchange="filterJobs()">
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (7)</option><option value="Figma">Figma (4)</option><option value="Notion">Notion (1)</option><option value="OpenAI">OpenAI (6)</option><option value="Vercel">Vercel (6)</option>
+            </select>
+        </div>
+        <div class="results-info" id="results-info">Showing all 24 jobs</div>
+    </div>
+    
+    <h2>📋 Latest Jobs</h2>
+    <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Notion">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/notion/47ad2298-2976-4f9b-ad2d-c1046704fc18" target="_blank">Product Manager, Growth</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco, California | 🏢 Notion | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Figma">
+        <div class="job-title">
+            <a href="https://boards.greenhouse.io/figma/jobs/5585360004?gh_jid=5585360004" target="_blank">Director, Product - Product Foundations</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Director, Product | 🏢 Figma | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Figma">
+        <div class="job-title">
+            <a href="https://boards.greenhouse.io/figma/jobs/5574247004?gh_jid=5574247004" target="_blank">Product Manager, AI</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, AI | 🏢 Figma | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Figma">
+        <div class="job-title">
+            <a href="https://boards.greenhouse.io/figma/jobs/5566296004?gh_jid=5566296004" target="_blank">Product Manager, Creation Engine</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, Creation | 🏢 Figma | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Figma">
+        <div class="job-title">
+            <a href="https://boards.greenhouse.io/figma/jobs/5565136004?gh_jid=5565136004" target="_blank">Product Manager, Data and AI Infrastructure</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, Data | 🏢 Figma | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/growth-product-manager-lead-5545514004" target="_blank">Growth Product Manager LeadHybrid - New York City, San FranciscoRead more</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 New York City, San | 🏢 Vercel | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/head-of-product-marketing-5199830004" target="_blank">Head of Product MarketingHybrid - New York City, San FranciscoRead more</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 New York City, San | 🏢 Vercel | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/product-manager-accounts-5589398004" target="_blank">Product Manager - AccountsHybrid - New York City, San FranciscoRead more</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 New York City, San | 🏢 Vercel | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/product-manager-agentic-infrastructure-5589448004" target="_blank">Product Manager - Agentic InfrastructureHybrid - New York City, San FranciscoRead more</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 New York City, San | 🏢 Vercel | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/product-manager-ai-security-5482193004" target="_blank">Product Manager - AI SecurityHybrid - New York City, San FranciscoRead more</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 New York City, San | 🏢 Vercel | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/product-manager-cdn-5527913004" target="_blank">Product Manager - CDNHybrid - New York City, San FranciscoRead more</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 New York City, San | 🏢 Vercel | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/7c78e86a-3c69-45f6-8d4b-aa6a98bdc59c" target="_blank">Enterprise Product Manager, Core Financials</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco - Hybrid | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/ac2e172b-faec-4111-b844-b0dc655b4cec" target="_blank">Enterprise Product Manager, EPM & Consolidation Solutions</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco - Hybrid | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/025c69d7-0963-4cf4-bf9f-2d923d22de8e" target="_blank">Product Manager, ChatGPT Growth</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/928f546c-4a7a-46e8-8e5b-b5a866180ee7" target="_blank">Product Manager, Countries & Governments</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/7535a7c2-b775-4ef8-9f6a-ad0e5120cf9f" target="_blank">Product Manager, Scaled Abuse</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/11fa5262-0bbf-498e-ba90-f2d1e367e939" target="_blank">Product Manager, Search</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4684257008" target="_blank">Lead Product Manager, ResearchSan Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4747377008" target="_blank">Product Manager, API Platform ExperienceSan Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4887900008" target="_blank">Product Manager, B2B GrowthSan Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4676859008" target="_blank">Product Manager, Claude CapabilitiesSan Francisco, CA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4858247008" target="_blank">Product Manager, Claude Code (Enterprise)San Francisco, CA | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4858249008" target="_blank">Product Manager, Claude Code (SDK)San Francisco, CA | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4807590008" target="_blank">Product Manager, ResearchSan Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-08-24 | Status: active
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+        function filterJobs() {
+            const selectedCompany = document.getElementById('company-filter').value;
+            const jobCards = document.querySelectorAll('.job-card');
+            const resultsInfo = document.getElementById('results-info');
+            const totalJobsCounter = document.getElementById('total-jobs');
+            
+            let visibleCount = 0;
+            
+            jobCards.forEach(card => {
+                const cardCompany = card.getAttribute('data-company');
+                
+                if (selectedCompany === 'all' || cardCompany === selectedCompany) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Update results info
+            if (selectedCompany === 'all') {
+                resultsInfo.textContent = `Showing all ${visibleCount} jobs`;
+            } else {
+                resultsInfo.textContent = `Showing ${visibleCount} jobs from ${selectedCompany}`;
+            }
+            
+            // Update total counter in stats
+            totalJobsCounter.textContent = visibleCount;
+        }
+        
+        // Initialize filter on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            filterJobs();
+        });
+    </script>
+</body>
+</html>

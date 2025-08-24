@@ -1,309 +1,4 @@
-html_content += f"""
-    <div class="{job_class}" data-company="{job['company']}">
-        <div class="job-title">
-            <a href="{job['url']}" target="_blank">{job['title']}</a>
-            {freshness_emoji}
-        </div>
-        <div class="job-meta">
-            📍 {job['location']} | 🏢 {job['company']} | 
-            {'📅 Posted: ' + job.get('date_posted', 'Unknown') + ' | ' if job.get('date_posted') != 'Unknown' else ''}
-            🔍 Found: {job['date_found']} | Status: {job['status']}
-        </div>
-    </div>
-"""
-        
-        html_content += """
-    </div>
-
-    <script>
-        function filterJobs() {
-            const selectedCompany = document.getElementById('company-filter').value;
-            const jobCards = document.querySelectorAll('.job-card');
-            const resultsInfo = document.getElementById('results-info');
-            const totalJobsCounter = document.getElementById('total-jobs');
-            
-            let visibleCount = 0;
-            
-            jobCards.forEach(card => {
-                const cardCompany = card.getAttribute('data-company');
-                
-                if (selectedCompany === 'all' || cardCompany === selectedCompany) {
-                    card.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-            
-            // Update results info
-            if (selectedCompany === 'all') {
-                resultsInfo.textContent = `Showing all ${visibleCount} jobs`;
-            } else {
-                resultsInfo.textContent = `Showing ${visibleCount} jobs from ${selectedCompany}`;
-            }
-            
-            // Update total counter in stats
-            totalJobsCounter.textContent = visibleCount;
-        }
-        
-        // Initialize filter on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            filterJobs();
-        });
-    </script>
-</body>
-</html>
-"""
-        
-        with open(data_dir / "dashboard.html", 'w', encoding='utf-8') as f:
-            f.write(html_content)
-        
-        logger.info("📊 HTML dashboard created: data/dashboard.html")
-        
-    except Exception as e:
-        logger.error(f"Error creating HTML report: {e}")
-
-
-# Add the missing GreenhouseParser implementation
-class GreenhouseParser(BaseParser):
-    """Parser for Greenhouse-powered job boards (Anthropic, etc.)"""
-    
-    def can_parse(self, url: str) -> bool:
-        return 'greenhouse.io' in url
-    
-    def parse_jobs(self, company: str, url: str) -> List[Dict]:
-        """Parse jobs from Greenhouse job boards"""
-        jobs = []
-        
-        try:
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-            
-            logger.info(f"Fetching Greenhouse board: {url}")
-            response = requests.get(url, headers=headers, timeout=30)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.content, 'html.parser')
-            
-            # Greenhouse-specific selectors
-            job_selectors = [
-                '.opening', '.job-post', '.position', '[data-job-id]',
-                '.job-listing', '.career-listing', '.opening-item'
-            ]
-            
-            job_elements = []
-            for selector in job_selectors:
-                elements = soup.select(selector)
-                if elements:
-                    job_elements = elements
-                    logger.info(f"Found {len(elements)} jobs using selector: {selector}")
-                    break
-            
-            # If no elements found, try link approach
-            if not job_elements:
-                all_links = soup.find_all('a', href=True)
-                for link in all_links:
-                    text = link.get_text().lower()
-                    if any(word in text for word in ['manager', 'product', 'director']):
-                        job_elements.append(link)
-                logger.info(f"Found {len(job_elements)} potential job links")
-            
-            for element in job_elements:
-                try:
-                    # Extract title
-                    title_elem = element.find(['h3', 'h4', 'a']) or element
-                    title = title_elem.get_text(strip=True)
-                    
-                    if not self.is_product_management_job(title):
-                        continue
-                    
-                    # Extract location
-                    location_elem = element.find(class_=re.compile(r'location', re.I))
-                    location = location_elem.get_text(strip=True) if location_elem else "Unknown"
-                    
-                    # Extract URL
-                    link_elem = element.find('a', href=True) if element.name != 'a' else element
-                    job_url = ""
-                    if link_elem and link_elem.get('href'):
-                        job_url = link_elem.get('href')
-                        if not job_url.startswith('http'):
-                            from urllib.parse import urljoin
-                            job_url = urljoin(url, job_url)
-                    
-                    job_data = {
-                        'company': company,
-                        'title': title,
-                        'location': location,
-                        'url': job_url or url,
-                        'date_posted': 'Unknown',
-                        'date_found': datetime.now().strftime('%Y-%m-%d'),
-                        'status': 'active'
-                    }
-                    job_data['hash'] = self.create_job_hash(job_data)
-                    
-                    jobs.append(job_data)
-                    logger.info(f"✅ Found Greenhouse PM job: {title}")
-                    
-                except Exception as e:
-                    logger.debug(f"Error parsing Greenhouse job element: {e}")
-                    continue
-            
-        except Exception as e:
-            logger.error(f"❌ Error parsing Greenhouse jobs from {company}: {e}")
-        
-        return jobs
-                
-        if not self.jobs_json.exists():
-            with open(self.jobs_json, 'w') as f:
-                json.dump([], f)
-                
-        if not self.stats_json.exists():
-            with open(self.stats_json, 'w') as f:
-                json.dump({
-                    'total_jobs_found': 0,
-                    'last_run': '',
-                    'companies_scraped': {},
-                    'run_history': []
-                }, f)
-    
-    def update_stats(self, companies: Dict[str, str], new_jobs_count: int):
-        """Update statistics file"""
-        try:
-            with open(self.stats_json, 'r') as f:
-                stats = json.load(f)
-            
-            # Update stats
-            stats['total_jobs_found'] = len(self.load_existing_jobs())
-            stats['last_run'] = datetime.now().strftime('%Y-%m-%d %H:%M')
-            stats['companies_scraped'] = {company: url for company, url in companies.items()}
-            
-            # Add to run history
-            run_info = {
-                'date': datetime.now().strftime('%Y-%m-%d %H:%M'),
-                'new_jobs': new_jobs_count,
-                'companies_scraped': len(companies)
-            }
-            stats['run_history'].append(run_info)
-            
-            # Keep only last 30 runs
-            stats['run_history'] = stats['run_history'][-30:]
-            
-            with open(self.stats_json, 'w') as f:
-                json.dump(stats, f, indent=2)
-                
-        except Exception as e:
-            logger.error(f"Error updating stats: {e}")
-
-
-def create_html_report(data_dir: Path):
-    """Create a simple HTML report"""
-    try:
-        with open(data_dir / "jobs.json", 'r') as f:
-            jobs = json.load(f)
-        
-        with open(data_dir / "stats.json", 'r') as f:
-            stats = json.load(f)
-        
-        html_content = f"""
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Job Search Dashboard</title>
-    <style>
-        body {{ font-family: Arial, sans-serif; margin: 20px; }}
-        .header {{ background: #f0f8ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; }}
-        .stats {{ display: flex; gap: 20px; margin-bottom: 20px; }}
-        .stat-box {{ background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; flex: 1; }}
-        .filters {{ background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; }}
-        .filter-group {{ display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }}
-        select {{ padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }}
-        .job-card {{ border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; transition: opacity 0.3s; }}
-        .job-card.hidden {{ display: none; }}
-        .job-title {{ font-weight: bold; color: #333; margin-bottom: 5px; }}
-        .job-meta {{ color: #666; font-size: 0.9em; }}
-        .fresh-job {{ border-left: 4px solid #4CAF50; }}
-        .recent-job {{ border-left: 4px solid #FF9800; }}
-        .old-job {{ border-left: 4px solid #999; }}
-        a {{ color: #0066cc; text-decoration: none; }}
-        a:hover {{ text-decoration: underline; }}
-        .results-info {{ color: #666; font-style: italic; margin-bottom: 15px; }}
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>🔍 Product Management Job Dashboard</h1>
-        <p>Last updated: {stats.get('last_run', 'Never')}</p>
-    </div>
-    
-    <div class="stats">
-        <div class="stat-box">
-            <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">{len(jobs)}</h2>
-        </div>
-        <div class="stat-box">
-            <h3>🏢 Companies</h3>
-            <h2>{len(stats.get('companies_scraped', {}))}</h2>
-        </div>
-        <div class="stat-box">
-            <h3>🆕 Today's New Jobs</h3>
-            <h2>{len([j for j in jobs if j['date_found'] == datetime.now().strftime('%Y-%m-%d')])}</h2>
-        </div>
-    </div>
-    
-    <div class="filters">
-        <div class="filter-group">
-            <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
-            <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option>"""
-
-        # Add company options
-        companies = sorted(set([job['company'] for job in jobs]))
-        for company in companies:
-            company_count = len([job for job in jobs if job['company'] == company])
-            html_content += f'<option value="{company}">{company} ({company_count})</option>'
-
-        html_content += f"""
-            </select>
-        </div>
-        <div class="results-info" id="results-info">Showing all {len(jobs)} jobs</div>
-    </div>
-    
-    <h2>📋 Latest Jobs</h2>
-    <div id="jobs-container">
-"""
-        
-        # Add job cards (latest 50)
-        for job in jobs[:50]:
-            is_today = job['date_found'] == datetime.now().strftime('%Y-%m-%d')
-            
-            # Determine job freshness based on date_posted
-            job_class = "job-card"
-            freshness_emoji = ""
-            
-            if job.get('date_posted') and job['date_posted'] != 'Unknown':
-                try:
-                    posted_date = datetime.strptime(job['date_posted'], '%Y-%m-%d')
-                    days_ago = (datetime.now() - posted_date).days
-                    
-                    if days_ago <= 3:
-                        job_class += " fresh-job"
-                        freshness_emoji = "🆕"
-                    elif days_ago <= 14:
-                        job_class += " recent-job" 
-                        freshness_emoji = "📅"
-                    else:
-                        job_class += " old-job"
-                        freshness_emoji = "📰"
-                except:
-                    job_class += " job-card"
-            
-            elif is_today:  # Fallback to found date if posted date unavailable
-                job_class += " fresh-job"
-                freshness_emoji = "🆕"
-            
-            html_content += f"""
-    <div class="job-#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Automated Job Scraper for Product Management Positions
 Modular parser system for different ATS platforms
@@ -569,7 +264,7 @@ class GreenhouseParser(BaseParser):
             # Greenhouse-specific selectors
             job_selectors = [
                 '.opening', '.job-post', '.position', '[data-job-id]',
-                '.job-listing', '.career-listing'
+                '.job-listing', '.career-listing', '.opening-item'
             ]
             
             job_elements = []
@@ -579,6 +274,15 @@ class GreenhouseParser(BaseParser):
                     job_elements = elements
                     logger.info(f"Found {len(elements)} jobs using selector: {selector}")
                     break
+            
+            # If no elements found, try link approach
+            if not job_elements:
+                all_links = soup.find_all('a', href=True)
+                for link in all_links:
+                    text = link.get_text().lower()
+                    if any(word in text for word in ['manager', 'product', 'director']):
+                        job_elements.append(link)
+                logger.info(f"Found {len(job_elements)} potential job links")
             
             for element in job_elements:
                 try:
@@ -594,9 +298,9 @@ class GreenhouseParser(BaseParser):
                     location = location_elem.get_text(strip=True) if location_elem else "Unknown"
                     
                     # Extract URL
-                    link_elem = element.find('a', href=True)
+                    link_elem = element.find('a', href=True) if element.name != 'a' else element
                     job_url = ""
-                    if link_elem:
+                    if link_elem and link_elem.get('href'):
                         job_url = link_elem.get('href')
                         if not job_url.startswith('http'):
                             from urllib.parse import urljoin
@@ -888,6 +592,19 @@ class JobScraper:
                     'company', 'title', 'location', 'url', 'date_posted', 
                     'date_found', 'hash', 'status'
                 ])
+                
+        if not self.jobs_json.exists():
+            with open(self.jobs_json, 'w') as f:
+                json.dump([], f)
+                
+        if not self.stats_json.exists():
+            with open(self.stats_json, 'w') as f:
+                json.dump({
+                    'total_jobs_found': 0,
+                    'last_run': '',
+                    'companies_scraped': {},
+                    'run_history': []
+                }, f)
     
     def load_existing_jobs(self) -> Dict[str, Dict]:
         """Load existing jobs from JSON file"""
@@ -917,6 +634,34 @@ class JobScraper:
             
         except Exception as e:
             logger.error(f"❌ Error saving jobs: {e}")
+    
+    def update_stats(self, companies: Dict[str, str], new_jobs_count: int):
+        """Update statistics file"""
+        try:
+            with open(self.stats_json, 'r') as f:
+                stats = json.load(f)
+            
+            # Update stats
+            stats['total_jobs_found'] = len(self.load_existing_jobs())
+            stats['last_run'] = datetime.now().strftime('%Y-%m-%d %H:%M')
+            stats['companies_scraped'] = {company: url for company, url in companies.items()}
+            
+            # Add to run history
+            run_info = {
+                'date': datetime.now().strftime('%Y-%m-%d %H:%M'),
+                'new_jobs': new_jobs_count,
+                'companies_scraped': len(companies)
+            }
+            stats['run_history'].append(run_info)
+            
+            # Keep only last 30 runs
+            stats['run_history'] = stats['run_history'][-30:]
+            
+            with open(self.stats_json, 'w') as f:
+                json.dump(stats, f, indent=2)
+                
+        except Exception as e:
+            logger.error(f"Error updating stats: {e}")
     
     def run_scraper(self, companies: Dict[str, str]):
         """Main scraper function"""
@@ -958,9 +703,187 @@ class JobScraper:
         # Save all jobs
         self.save_jobs(all_jobs)
         
+        # Update statistics
+        self.update_stats(companies, len(new_jobs))
+        
+        # Create HTML report
+        create_html_report(self.data_dir)
+        
         logger.info(f"🎉 Scraper completed! Found {len(new_jobs)} new jobs out of {len(all_jobs)} total")
         
         return len(new_jobs), len(all_jobs)
+
+
+def create_html_report(data_dir: Path):
+    """Create a simple HTML report"""
+    try:
+        with open(data_dir / "jobs.json", 'r') as f:
+            jobs = json.load(f)
+        
+        with open(data_dir / "stats.json", 'r') as f:
+            stats = json.load(f)
+        
+        html_content = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Search Dashboard</title>
+    <style>
+        body {{ font-family: Arial, sans-serif; margin: 20px; }}
+        .header {{ background: #f0f8ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; }}
+        .stats {{ display: flex; gap: 20px; margin-bottom: 20px; }}
+        .stat-box {{ background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; flex: 1; }}
+        .filters {{ background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; }}
+        .filter-group {{ display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }}
+        select {{ padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }}
+        .job-card {{ border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; transition: opacity 0.3s; }}
+        .job-card.hidden {{ display: none; }}
+        .job-title {{ font-weight: bold; color: #333; margin-bottom: 5px; }}
+        .job-meta {{ color: #666; font-size: 0.9em; }}
+        .fresh-job {{ border-left: 4px solid #4CAF50; }}
+        .recent-job {{ border-left: 4px solid #FF9800; }}
+        .old-job {{ border-left: 4px solid #999; }}
+        a {{ color: #0066cc; text-decoration: none; }}
+        a:hover {{ text-decoration: underline; }}
+        .results-info {{ color: #666; font-style: italic; margin-bottom: 15px; }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔎 Product Management Job Dashboard</h1>
+        <p>Last updated: {stats.get('last_run', 'Never')}</p>
+    </div>
+    
+    <div class="stats">
+        <div class="stat-box">
+            <h3>📊 Total Jobs</h3>
+            <h2 id="total-jobs">{len(jobs)}</h2>
+        </div>
+        <div class="stat-box">
+            <h3>🏢 Companies</h3>
+            <h2>{len(stats.get('companies_scraped', {}))}</h2>
+        </div>
+        <div class="stat-box">
+            <h3>🆕 Today's New Jobs</h3>
+            <h2>{len([j for j in jobs if j['date_found'] == datetime.now().strftime('%Y-%m-%d')])}</h2>
+        </div>
+    </div>
+    
+    <div class="filters">
+        <div class="filter-group">
+            <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
+            <select id="company-filter" onchange="filterJobs()">
+                <option value="all">All Companies</option>"""
+
+        # Add company options
+        companies = sorted(set([job['company'] for job in jobs]))
+        for company in companies:
+            company_count = len([job for job in jobs if job['company'] == company])
+            html_content += f'<option value="{company}">{company} ({company_count})</option>'
+
+        html_content += f"""
+            </select>
+        </div>
+        <div class="results-info" id="results-info">Showing all {len(jobs)} jobs</div>
+    </div>
+    
+    <h2>📋 Latest Jobs</h2>
+    <div id="jobs-container">
+"""
+        
+        # Add job cards (latest 50)
+        for job in jobs[:50]:
+            is_today = job['date_found'] == datetime.now().strftime('%Y-%m-%d')
+            
+            # Determine job freshness based on date_posted
+            job_class = "job-card"
+            freshness_emoji = ""
+            
+            if job.get('date_posted') and job['date_posted'] != 'Unknown':
+                try:
+                    posted_date = datetime.strptime(job['date_posted'], '%Y-%m-%d')
+                    days_ago = (datetime.now() - posted_date).days
+                    
+                    if days_ago <= 3:
+                        job_class += " fresh-job"
+                        freshness_emoji = "🆕"
+                    elif days_ago <= 14:
+                        job_class += " recent-job" 
+                        freshness_emoji = "📅"
+                    else:
+                        job_class += " old-job"
+                        freshness_emoji = "📰"
+                except:
+                    job_class += " job-card"
+            
+            elif is_today:  # Fallback to found date if posted date unavailable
+                job_class += " fresh-job"
+                freshness_emoji = "🆕"
+            
+            html_content += f"""
+    <div class="{job_class}" data-company="{job['company']}">
+        <div class="job-title">
+            <a href="{job['url']}" target="_blank">{job['title']}</a>
+            {freshness_emoji}
+        </div>
+        <div class="job-meta">
+            📍 {job['location']} | 🏢 {job['company']} | 
+            {'📅 Posted: ' + job.get('date_posted', 'Unknown') + ' | ' if job.get('date_posted') != 'Unknown' else ''}
+            🔍 Found: {job['date_found']} | Status: {job['status']}
+        </div>
+    </div>
+"""
+        
+        html_content += """
+    </div>
+
+    <script>
+        function filterJobs() {
+            const selectedCompany = document.getElementById('company-filter').value;
+            const jobCards = document.querySelectorAll('.job-card');
+            const resultsInfo = document.getElementById('results-info');
+            const totalJobsCounter = document.getElementById('total-jobs');
+            
+            let visibleCount = 0;
+            
+            jobCards.forEach(card => {
+                const cardCompany = card.getAttribute('data-company');
+                
+                if (selectedCompany === 'all' || cardCompany === selectedCompany) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Update results info
+            if (selectedCompany === 'all') {
+                resultsInfo.textContent = `Showing all ${visibleCount} jobs`;
+            } else {
+                resultsInfo.textContent = `Showing ${visibleCount} jobs from ${selectedCompany}`;
+            }
+            
+            // Update total counter in stats
+            totalJobsCounter.textContent = visibleCount;
+        }
+        
+        // Initialize filter on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            filterJobs();
+        });
+    </script>
+</body>
+</html>
+"""
+        
+        with open(data_dir / "dashboard.html", 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        
+        logger.info("📊 HTML dashboard created: data/dashboard.html")
+        
+    except Exception as e:
+        logger.error(f"Error creating HTML report: {e}")
 
 
 def main():
@@ -985,7 +908,7 @@ def main():
         
         print(f"✅ Scraper completed successfully!")
         print(f"📊 New PM jobs found: {new_jobs}")
-        print(f"📝 Total jobs tracked: {total_jobs}")
+        print(f"🔍 Total jobs tracked: {total_jobs}")
         print(f"🏢 Companies scraped: {len(companies)}")
         
         return 0

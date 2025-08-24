@@ -74,43 +74,69 @@ class JobScraper:
 
     def is_product_management_job(self, title: str, url: str = "", description: str = "") -> bool:
         """Check if job title/description matches Product Management criteria"""
-        # Filter out non-job URLs first
+        # First, filter out non-job URLs
         excluded_url_patterns = [
             '/product-managers/',  # General info pages
-            '/about-product',
-            '/what-is-product',
-            '/product-management-guide',
-            '/blog/',
-            '/resources/',
-            '/tools/',
-            '/templates/'
+            '/about-product', '/what-is-product', '/product-management-guide',
+            '/blog/', '/resources/', '/tools/', '/templates/',
+            '/product-development/', '/product/', '/customers/', '/features/',
+            '/stories/', '/case-studies/', '/solutions/', '/pricing/',
+            'forbes.com', 'techcrunch.com', 'medium.com',  # External articles
+            '/company/', '/about/', '/contact/', '/support/',
+            '.pdf', '.jpg', '.png', '.gif'  # File downloads
         ]
         
         for pattern in excluded_url_patterns:
             if pattern in url.lower():
-                logger.debug(f"Excluded URL pattern found: {pattern} in {url}")
+                logger.info(f"🚫 Excluded URL: {url} (matched: {pattern})")
                 return False
+        
+        # Only consider URLs that look like job listings
+        job_url_patterns = [
+            '/jobs/', '/careers/', '/job/', '/career/', '/positions/', 
+            '/listing/', '/opening/', '/vacancy/', '/role/',
+            'greenhouse.io', 'lever.co', 'workday', 'ashbyhq.com'
+        ]
+        
+        # If URL doesn't contain job-related patterns, it's probably not a job
+        if url and not any(pattern in url.lower() for pattern in job_url_patterns):
+            logger.info(f"🚫 Non-job URL: {url} (no job patterns)")
+            return False
         
         text = f"{title.lower()} {description.lower()}"
         
         # Must contain product management keywords
         has_pm_keyword = any(keyword in text for keyword in self.product_mgmt_keywords)
         
+        # Additional check: reject titles that are clearly navigation/marketing
+        navigation_titles = [
+            'product development', 'customer stories', 'read about', 'leading product teams',
+            'features', 'solutions', 'pricing', 'about us', 'contact', 'support',
+            'read more', 'learn more', 'get started', 'sign up', 'try free'
+        ]
+        
+        has_navigation = any(nav_term in text for nav_term in navigation_titles)
+        if has_navigation:
+            logger.info(f"🚫 Navigation title: '{title}'")
+            return False
+        
         # Exclude non-PM roles that might contain "product"
         exclude_keywords = [
             'software engineer', 'frontend', 'backend', 'developer', 'designer',
             'marketing', 'sales', 'customer success', 'support', 'analyst',
-            'intern', 'qa', 'test', 'devops', 'data scientist', 'recruiter'
+            'intern', 'qa', 'test', 'devops', 'data scientist', 'recruiter',
+            'account executive', 'content strategist'  # From your examples
         ]
         
         has_exclude = any(keyword in text for keyword in exclude_keywords)
         
-        # Debug logging
-        result = has_pm_keyword and not has_exclude
-        if not result:
-            logger.info(f"Filtered out '{title}': PM keyword={has_pm_keyword}, Exclude={has_exclude}")
+        # Debug logging for edge cases
+        if not has_pm_keyword:
+            logger.info(f"🚫 No PM keyword: '{title}'")
+        elif has_exclude:
+            logger.info(f"🚫 Excluded role: '{title}' (matched exclude keyword)")
         
-        return result
+        return has_pm_keyword and not has_exclude
 
     def parse_date_text(self, date_text: str) -> str:
         """Parse various date formats into standardized format"""

@@ -195,9 +195,17 @@ class JobScraper:
             
             # Common selectors for job listings (try multiple patterns)
             job_selectors = [
+                # Standard selectors
                 '.job-listing', '.job-item', '.position', '.job-card', '.job-post',
                 '[data-job-id]', '.job', '.career-item', '.opening', '.vacancy',
-                '.role', '.position-item', '.job-opportunity'
+                '.role', '.position-item', '.job-opportunity',
+                
+                # Company-specific selectors
+                '.OpenRoles_role-heading__sBi1o',  # Anthropic
+                '.JobCard', '.JobListing',  # Stripe
+                '.VfPpkd-rymPhb',  # Google
+                '[data-testid*="job"]',  # Various modern sites
+                '.career-position', '.posting', '.role-card'
             ]
             
             job_elements = []
@@ -437,15 +445,15 @@ class JobScraper:
 def main():
     """Main function for GitHub Actions"""
     
-   # Company URLs - Updated with your specific targets
+    # Company URLs - Updated with your specific targets
     companies = {
-        "Stripe": "https://stripe.com/jobs/search?query=product+manager",
+        "Stripe": "https://stripe.com/jobs/search?q=product%20manager",
         "Notion": "https://www.notion.com/careers?department=product-management#open-positions",
         "Figma": "https://www.figma.com/careers/#job-openings",
         "Linear": "https://linear.app/careers#join-us",
         "Vercel": "https://vercel.com/careers?function=Product",
         "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
-        "Anthropic": "https://job-boards.greenhouse.io/anthropic/?departments%5B%5D=4002057008",
+        "Anthropic": "https://www.anthropic.com/jobs?team=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
         "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
     }
@@ -491,7 +499,11 @@ def create_html_report(data_dir: Path):
         .header {{ background: #f0f8ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; }}
         .stats {{ display: flex; gap: 20px; margin-bottom: 20px; }}
         .stat-box {{ background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; flex: 1; }}
-        .job-card {{ border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; }}
+        .filters {{ background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; }}
+        .filter-group {{ display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }}
+        select {{ padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }}
+        .job-card {{ border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; transition: opacity 0.3s; }}
+        .job-card.hidden {{ display: none; }}
         .job-title {{ font-weight: bold; color: #333; margin-bottom: 5px; }}
         .job-meta {{ color: #666; font-size: 0.9em; }}
         .fresh-job {{ border-left: 4px solid #4CAF50; }}
@@ -499,6 +511,7 @@ def create_html_report(data_dir: Path):
         .old-job {{ border-left: 4px solid #999; }}
         a {{ color: #0066cc; text-decoration: none; }}
         a:hover {{ text-decoration: underline; }}
+        .results-info {{ color: #666; font-style: italic; margin-bottom: 15px; }}
     </style>
 </head>
 <body>
@@ -510,7 +523,7 @@ def create_html_report(data_dir: Path):
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2>{len(jobs)}</h2>
+            <h2 id="total-jobs">{len(jobs)}</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -522,7 +535,26 @@ def create_html_report(data_dir: Path):
         </div>
     </div>
     
+    <div class="filters">
+        <div class="filter-group">
+            <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
+            <select id="company-filter" onchange="filterJobs()">
+                <option value="all">All Companies</option>"""
+
+        # Add company options
+        companies = sorted(set([job['company'] for job in jobs]))
+        for company in companies:
+            company_count = len([job for job in jobs if job['company'] == company])
+            html_content += f'<option value="{company}">{company} ({company_count})</option>'
+
+        html_content += f"""
+            </select>
+        </div>
+        <div class="results-info" id="results-info">Showing all {len(jobs)} jobs</div>
+    </div>
+    
     <h2>📋 Latest Jobs</h2>
+    <div id="jobs-container">
 """
         
         # Add job cards (latest 50)
@@ -555,7 +587,7 @@ def create_html_report(data_dir: Path):
                 freshness_emoji = "🆕"
             
             html_content += f"""
-    <div class="{job_class}">
+    <div class="job-card {job_class}" data-company="{job['company']}">
         <div class="job-title">
             <a href="{job['url']}" target="_blank">{job['title']}</a>
             {freshness_emoji}
@@ -569,6 +601,44 @@ def create_html_report(data_dir: Path):
 """
         
         html_content += """
+    </div>
+
+    <script>
+        function filterJobs() {
+            const selectedCompany = document.getElementById('company-filter').value;
+            const jobCards = document.querySelectorAll('.job-card');
+            const resultsInfo = document.getElementById('results-info');
+            const totalJobsCounter = document.getElementById('total-jobs');
+            
+            let visibleCount = 0;
+            
+            jobCards.forEach(card => {
+                const cardCompany = card.getAttribute('data-company');
+                
+                if (selectedCompany === 'all' || cardCompany === selectedCompany) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Update results info
+            if (selectedCompany === 'all') {
+                resultsInfo.textContent = `Showing all ${visibleCount} jobs`;
+            } else {
+                resultsInfo.textContent = `Showing ${visibleCount} jobs from ${selectedCompany}`;
+            }
+            
+            // Update total counter in stats
+            totalJobsCounter.textContent = visibleCount;
+        }
+        
+        // Initialize filter on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            filterJobs();
+        });
+    </script>
 </body>
 </html>
 """

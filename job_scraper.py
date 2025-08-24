@@ -453,6 +453,8 @@ class GenericParser(BaseParser):
             
             # Common selectors for job listings
             job_selectors = [
+                '.WpHeLc',  # Google specific
+                'a[href*="jobs/results/"]',  # Google URL pattern
                 '.JobsListings__link',  # Stripe specific
                 'a[href*="/jobs/listing/"]',  # Stripe URL pattern
                 '.job-listing', '.job-item', '.position', '.job-card', '.job-post',
@@ -460,7 +462,6 @@ class GenericParser(BaseParser):
                 '.role', '.position-item', '.job-opportunity',
                 '.OpenRoles_role-heading__sBi1o',  # Anthropic
                 '.JobCard', '.JobListing',  # Generic
-                '.VfPpkd-rymPhb',  # Google
                 '[data-testid*="job"]',  # Various modern sites
                 '.career-position', '.posting', '.role-card',
                 'a[data-js-target-list*="JobsListings"]',  # Stripe data attribute
@@ -485,12 +486,14 @@ class GenericParser(BaseParser):
                 for link in all_links:
                     href = link.get('href', '')
                     text = link.get_text().lower()
+                    aria_label = link.get('aria-label', '').lower()
                     
                     # Check if it's a job listing URL or has job-related text
-                    is_job_url = any(pattern in href for pattern in ['/jobs/listing/', '/careers/', '/job/', '/opening/'])
+                    is_job_url = any(pattern in href for pattern in ['/jobs/listing/', '/careers/', '/job/', '/opening/', 'jobs/results/'])
                     has_job_text = any(word in text for word in ['manager', 'product', 'director', 'lead', 'senior', 'principal', 'staff'])
+                    has_job_aria = any(word in aria_label for word in ['manager', 'product', 'director', 'lead', 'senior'])
                     
-                    if is_job_url or has_job_text:
+                    if is_job_url or has_job_text or has_job_aria:
                         job_elements.append(link)
                 
                 logger.info(f"Found {len(job_elements)} potential job links")
@@ -502,15 +505,34 @@ class GenericParser(BaseParser):
                     # Extract job title
                     title = ""
                     
+                    # For Google, extract from aria-label first
+                    if element.name == 'a' and element.get('aria-label'):
+                        aria_label = element.get('aria-label')
+                        # Remove "Learn more about " prefix if present
+                        if aria_label.startswith('Learn more about '):
+                            title = aria_label.replace('Learn more about ', '')
+                        else:
+                            title = aria_label
+                    
                     # For Stripe and similar sites, the link text itself is often the title
-                    if element.name == 'a':
+                    if not title and element.name == 'a':
                         title = element.get_text(strip=True)
                     
-                    # If not found, try other methods
+                    # For Google, also try to extract from URL if title not found
+                    if not title or len(title) < 5:
+                        href = element.get('href', '')
+                        if 'jobs/results/' in href:
+                            # Extract from URL: /jobs/results/ID-job-title-slug
+                            match = re.search(r'jobs/results/\d+-(.+?)(?:\?|$)', href)
+                            if match:
+                                # Convert slug to title: senior-product-manager -> Senior Product Manager
+                                title = match.group(1).replace('-', ' ').title()
+                    
+                    # If still not found, try other methods
                     if not title or len(title) < 5:
                         title_elem = (
                             element.find(['h1', 'h2', 'h3', 'h4']) or 
-                            element.find(class_=re.compile(r'title|job-title|position|role-title', re.I)) or
+                            element.find(class_=re.compile(r'title|job-title|position|role-title|QJPWVe', re.I)) or
                             element.find('a') or
                             element
                         )
@@ -952,6 +974,7 @@ def main():
         "Anthropic": "https://job-boards.greenhouse.io/anthropic/?departments%5B%5D=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
         "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
+        "Netflix": "https://explore.jobs.netflix.net/careers?query=Product%20Management"
     }
     
     try:

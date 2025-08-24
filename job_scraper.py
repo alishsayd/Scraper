@@ -69,19 +69,54 @@ class BaseParser(ABC):
         if url and not any(pattern in url.lower() for pattern in job_url_patterns):
             return False
         
-        text = f"{title.lower()} {description.lower()}"
-        has_pm_keyword = any(keyword in text for keyword in self.product_mgmt_keywords)
+        title_lower = title.lower()
         
-        # Exclude non-PM roles
-        exclude_keywords = [
-            'software engineer', 'frontend', 'backend', 'developer', 'designer',
-            'marketing', 'sales', 'customer success', 'support', 'analyst',
-            'intern', 'qa', 'test', 'devops', 'data scientist', 'recruiter',
-            'account executive', 'content strategist'
+        # Must have Product Manager/PM in the title specifically
+        # More flexible matching to catch variations
+        pm_patterns = [
+            'product manager', 'product management', 'pm,', '- pm', '(pm)', 
+            'senior pm', 'principal pm', 'staff pm', 'group pm',
+            'director of product', 'director, product', 'director product',
+            'head of product', 'vp product', 'vp of product', 'product lead',
+            'product owner', 'associate pm', 'junior pm', 'lead pm',
+            'product management', 'pm -', 'pm lead', 'pm director'
         ]
         
-        has_exclude = any(keyword in text for keyword in exclude_keywords)
-        return has_pm_keyword and not has_exclude
+        has_pm_in_title = any(pattern in title_lower for pattern in pm_patterns)
+        
+        # Also check for "PM" as a standalone word (not part of another word)
+        import re
+        if not has_pm_in_title:
+            # Check for PM as a word boundary (e.g., "PM, ChatGPT" or "ChatGPT PM")
+            pm_word_pattern = r'\bpm\b'
+            if re.search(pm_word_pattern, title_lower):
+                has_pm_in_title = True
+        
+        # If it doesn't have PM in title, skip it
+        if not has_pm_in_title:
+            return False
+        
+        # Exclude non-PM roles even if they have "product" in title
+        # Be more specific with exclusions to avoid false negatives
+        exclude_patterns = [
+            'engineer', 'engineering manager', 'frontend', 'backend', 'developer',
+            'designer', 'design', 'marketing manager', 'sales', 'customer success',
+            'support', 'data analyst', 'intern', 'qa', 'test', 'devops', 
+            'data scientist', 'recruiter', 'account executive', 'content writer',
+            'researcher', 'research scientist', 'technical writer', 'program manager',
+            'project manager', 'operations manager', 'business development', 
+            'partnerships manager', 'growth marketing', 'strategist', 'evangelist'
+        ]
+        
+        # Check if any exclude keywords are prominently in the title
+        for pattern in exclude_patterns:
+            if pattern in title_lower:
+                # Make exception for "Product Marketing Manager" which is sometimes grouped with PM
+                if pattern == 'marketing' and 'product marketing manager' in title_lower:
+                    continue
+                return False
+        
+        return True
 
     def create_job_hash(self, job: Dict) -> str:
         """Create unique hash for job to detect duplicates"""
@@ -191,12 +226,11 @@ class AshbyParser(BaseParser):
                 team_id = job.get('teamId', '')
                 team_name = team_lookup.get(team_id, '').lower()
                 
-                # Check if it's a Product Manager role
+                # Check if it's a Product Manager role - strict title matching only
                 is_pm_by_title = self.is_product_management_job(title, "", "")
-                is_pm_by_team = ('product management' in team_name or 
-                                team_id in pm_team_ids.get(org_name, []))
                 
-                if is_pm_by_title or is_pm_by_team:
+                # Skip jobs that don't have Product Manager in the title
+                if is_pm_by_title:
                     
                     # Build location string
                     location = job.get('locationName', 'Unknown')

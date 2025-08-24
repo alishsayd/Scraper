@@ -348,13 +348,10 @@ class JobScraper:
             # Save to CSV (for easy viewing)
             with open(self.jobs_csv, 'w', newline='', encoding='utf-8') as f:
                 if all_jobs:
-                    fieldnames = ['company', 'title', 'location', 'url', 'date_posted', 'date_found', 'hash', 'status']
-                    writer = csv.DictWriter(f, fieldnames=fieldnames)
+                    writer = csv.DictWriter(f, fieldnames=all_jobs[0].keys())
                     writer.writeheader()
                     writer.writerows(all_jobs)
                     logger.info(f"✅ Saved {len(all_jobs)} jobs to CSV")
-                else:
-                    logger.warning("⚠️ No jobs to save to CSV")
             
         except Exception as e:
             logger.error(f"❌ Error saving jobs: {e}")
@@ -440,7 +437,7 @@ class JobScraper:
 def main():
     """Main function for GitHub Actions"""
     
-   # Company URLs - Updated with your specific targets
+    # Company URLs - Updated with your specific targets
     companies = {
         "Stripe": "https://stripe.com/jobs/search",
         "Notion": "https://www.notion.com/careers?department=product-management#open-positions",
@@ -448,9 +445,10 @@ def main():
         "Linear": "https://linear.app/careers#join-us",
         "Vercel": "https://vercel.com/careers?function=Product",
         "OpenAI": "https://openai.com/careers/search/?c=db3c67d7-3646-4555-925b-40f30ab09f28",
-        "Anthropic": "https://www.anthropic.com/jobs",
+        "Anthropic": "https://www.anthropic.com/jobs?team=4002057008",
         "Discord": "https://discord.com/careers#all-jobs",
-        "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
+        # Add Google if you want
+        # "Google": "https://www.google.com/about/careers/applications/jobs/results?target_level=DIRECTOR_PLUS&target_level=ADVANCED&q=product%20manager",
     }
     
     try:

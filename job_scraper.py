@@ -453,14 +453,18 @@ class GenericParser(BaseParser):
             
             # Common selectors for job listings
             job_selectors = [
+                '.JobsListings__link',  # Stripe specific
+                'a[href*="/jobs/listing/"]',  # Stripe URL pattern
                 '.job-listing', '.job-item', '.position', '.job-card', '.job-post',
                 '[data-job-id]', '.job', '.career-item', '.opening', '.vacancy',
                 '.role', '.position-item', '.job-opportunity',
                 '.OpenRoles_role-heading__sBi1o',  # Anthropic
-                '.JobCard', '.JobListing',  # Stripe
+                '.JobCard', '.JobListing',  # Generic
                 '.VfPpkd-rymPhb',  # Google
                 '[data-testid*="job"]',  # Various modern sites
-                '.career-position', '.posting', '.role-card'
+                '.career-position', '.posting', '.role-card',
+                'a[data-js-target-list*="JobsListings"]',  # Stripe data attribute
+                'a[data-analytics-category="Links"]'  # Stripe analytics
             ]
             
             job_elements = []
@@ -479,8 +483,14 @@ class GenericParser(BaseParser):
                 job_elements = []
                 
                 for link in all_links:
+                    href = link.get('href', '')
                     text = link.get_text().lower()
-                    if any(word in text for word in ['manager', 'product', 'director', 'lead', 'senior']):
+                    
+                    # Check if it's a job listing URL or has job-related text
+                    is_job_url = any(pattern in href for pattern in ['/jobs/listing/', '/careers/', '/job/', '/opening/'])
+                    has_job_text = any(word in text for word in ['manager', 'product', 'director', 'lead', 'senior', 'principal', 'staff'])
+                    
+                    if is_job_url or has_job_text:
                         job_elements.append(link)
                 
                 logger.info(f"Found {len(job_elements)} potential job links")
@@ -490,13 +500,21 @@ class GenericParser(BaseParser):
             for element in job_elements[:50]:  # Limit to prevent overload
                 try:
                     # Extract job title
-                    title_elem = (
-                        element.find(['h1', 'h2', 'h3', 'h4']) or 
-                        element.find(class_=re.compile(r'title|job-title|position|role-title', re.I)) or
-                        element.find('a') or
-                        element
-                    )
-                    title = title_elem.get_text(strip=True) if title_elem else "Unknown"
+                    title = ""
+                    
+                    # For Stripe and similar sites, the link text itself is often the title
+                    if element.name == 'a':
+                        title = element.get_text(strip=True)
+                    
+                    # If not found, try other methods
+                    if not title or len(title) < 5:
+                        title_elem = (
+                            element.find(['h1', 'h2', 'h3', 'h4']) or 
+                            element.find(class_=re.compile(r'title|job-title|position|role-title', re.I)) or
+                            element.find('a') or
+                            element
+                        )
+                        title = title_elem.get_text(strip=True) if title_elem else "Unknown"
                     
                     # Clean up title
                     title = re.sub(r'\s+', ' ', title)  # Remove extra whitespace

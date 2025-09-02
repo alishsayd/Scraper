@@ -1,6 +1,6 @@
 {
-  "total_jobs_found": 40,
-  "last_run": "2025-09-01 09:15",
+  "total_jobs_found": 41,
+  "last_run": "2025-09-02 09:13",
   "companies_scraped": {
     "Stripe": "https://stripe.com/jobs/search?query=product+manager",
     "Notion": "https://www.notion.com/careers?department=product-management#open-positions",
@@ -67,6 +67,11 @@
     {
       "date": "2025-09-01 09:15",
       "new_jobs": 0,
+      "companies_scraped": 10
+    },
+    {
+      "date": "2025-09-02 09:13",
+      "new_jobs": 1,
       "companies_scraped": 10
     }
   ]

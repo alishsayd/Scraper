@@ -1,6 +1,26 @@
 [
   {
     "company": "Stripe",
+    "title": "Founding Product Manager, Privy",
+    "location": "Founding Product Manager, Privy",
+    "url": "https://stripe.com/jobs/listing/founding-product-manager-privy/7091957",
+    "date_posted": "Unknown",
+    "date_found": "2025-09-04",
+    "status": "active",
+    "hash": "bd38f3379d8d"
+  },
+  {
+    "company": "Stripe",
+    "title": "Product Manager, Cards",
+    "location": "Product Manager, Cards",
+    "url": "https://stripe.com/jobs/listing/product-manager-cards/7079857",
+    "date_posted": "Unknown",
+    "date_found": "2025-09-04",
+    "status": "active",
+    "hash": "950df09f76f8"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager",
     "location": "Remote/Unknown",
     "url": "https://stripe.com/jobs/listing/product-manager/6473321",

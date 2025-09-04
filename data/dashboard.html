@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2025-09-03 09:13</p>
+        <p>Last updated: 2025-09-04 09:13</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">41</h2>
+            <h2 id="total-jobs">43</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>2</h2>
         </div>
     </div>
     
@@ -48,14 +48,38 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (7)</option><option value="Figma">Figma (4)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (7)</option><option value="Stripe">Stripe (15)</option><option value="Vercel">Vercel (6)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (7)</option><option value="Figma">Figma (4)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (7)</option><option value="Stripe">Stripe (17)</option><option value="Vercel">Vercel (6)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 41 jobs</div>
+        <div class="results-info" id="results-info">Showing all 43 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Stripe">
+        <div class="job-title">
+            <a href="https://stripe.com/jobs/listing/founding-product-manager-privy/7091957" target="_blank">Founding Product Manager, Privy</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Founding Product Manager, Privy | 🏢 Stripe | 
+            
+            🔍 Found: 2025-09-04 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Stripe">
+        <div class="job-title">
+            <a href="https://stripe.com/jobs/listing/product-manager-cards/7079857" target="_blank">Product Manager, Cards</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, Cards | 🏢 Stripe | 
+            
+            🔍 Found: 2025-09-04 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="Stripe">
         <div class="job-title">

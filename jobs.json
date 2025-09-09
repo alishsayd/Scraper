@@ -1,5 +1,35 @@
 [
   {
+    "company": "Figma",
+    "title": "Early Career, Associate Product Manager (2026)",
+    "location": "Early Career, Associate",
+    "url": "https://boards.greenhouse.io/figma/jobs/5621649004?gh_jid=5621649004",
+    "date_posted": "Unknown",
+    "date_found": "2025-09-09",
+    "status": "active",
+    "hash": "900332d270e5"
+  },
+  {
+    "company": "OpenAI",
+    "title": "Enterprise Product Manager, Order to Cash",
+    "location": "San Francisco - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/5cff3a8c-2e3a-423d-a7a3-e985119f2e54",
+    "date_posted": "Unknown",
+    "date_found": "2025-09-09",
+    "status": "active",
+    "hash": "19f7b8f592b0"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, APINewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4914176008",
+    "date_posted": "Unknown",
+    "date_found": "2025-09-09",
+    "status": "active",
+    "hash": "881dacca0fb5"
+  },
+  {
     "company": "Stripe",
     "title": "Founding Product Manager, Privy",
     "location": "Founding Product Manager, Privy",

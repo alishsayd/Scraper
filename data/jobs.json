@@ -1,5 +1,75 @@
 [
   {
+    "company": "OpenAI",
+    "title": "Product Manager, Multimodal",
+    "location": "San Francisco",
+    "url": "https://jobs.ashbyhq.com/openai/74159f39-cd9b-4f2b-bb21-c85914201fa7",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-03",
+    "status": "active",
+    "hash": "3480bbd01606"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Lead Product Manager, ResearchSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4933813008",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-03",
+    "status": "active",
+    "hash": "ef7249acd044"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, APItags.newSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4936029008",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-03",
+    "status": "active",
+    "hash": "4192a78d9b66"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Beneficial DeploymentsSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4933006008",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-03",
+    "status": "active",
+    "hash": "a1baba61fb4c"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, MobileSan Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4933411008",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-03",
+    "status": "active",
+    "hash": "a415a5ea12b6"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Researchtags.newSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4933792008",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-03",
+    "status": "active",
+    "hash": "9f287fa8640b"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguardstags.newSan Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4932942008",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-03",
+    "status": "active",
+    "hash": "3321df81a841"
+  },
+  {
     "company": "Vercel",
     "title": "Product Manager - PricingRemote - United StatesRead more",
     "location": "Remote",

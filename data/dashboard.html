@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2025-10-06 09:15</p>
+        <p>Last updated: 2025-10-07 09:14</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">71</h2>
+            <h2 id="total-jobs">73</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>2</h2>
         </div>
     </div>
     
@@ -48,14 +48,38 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (22)</option><option value="Figma">Figma (6)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (12)</option><option value="Stripe">Stripe (21)</option><option value="Vercel">Vercel (8)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (23)</option><option value="Figma">Figma (6)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (13)</option><option value="Stripe">Stripe (21)</option><option value="Vercel">Vercel (8)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 71 jobs</div>
+        <div class="results-info" id="results-info">Showing all 73 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/14adce00-7414-40cf-bec2-3871c289a54d" target="_blank">Product Manager, Codex</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco - OnSite | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-10-07 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4932942008" target="_blank">Product Manager, SafeguardsSan Francisco, CA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-10-07 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="OpenAI">
         <div class="job-title">
@@ -624,30 +648,6 @@
     <div class="job-card" data-company="OpenAI">
         <div class="job-title">
             <a href="https://jobs.ashbyhq.com/openai/928f546c-4a7a-46e8-8e5b-b5a866180ee7" target="_blank">Product Manager, Countries & Governments</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 San Francisco | 🏢 OpenAI | 
-            
-            🔍 Found: 2025-08-24 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="OpenAI">
-        <div class="job-title">
-            <a href="https://jobs.ashbyhq.com/openai/7535a7c2-b775-4ef8-9f6a-ad0e5120cf9f" target="_blank">Product Manager, Scaled Abuse</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 San Francisco | 🏢 OpenAI | 
-            
-            🔍 Found: 2025-08-24 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="OpenAI">
-        <div class="job-title">
-            <a href="https://jobs.ashbyhq.com/openai/11fa5262-0bbf-498e-ba90-f2d1e367e939" target="_blank">Product Manager, Search</a>
             
         </div>
         <div class="job-meta">

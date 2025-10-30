@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2025-10-29 09:13</p>
+        <p>Last updated: 2025-10-30 09:14</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">78</h2>
+            <h2 id="total-jobs">80</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>1</h2>
+            <h2>2</h2>
         </div>
     </div>
     
@@ -48,19 +48,43 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (25)</option><option value="Figma">Figma (7)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (13)</option><option value="Stripe">Stripe (23)</option><option value="Vercel">Vercel (8)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (25)</option><option value="Figma">Figma (8)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (14)</option><option value="Stripe">Stripe (23)</option><option value="Vercel">Vercel (8)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 78 jobs</div>
+        <div class="results-info" id="results-info">Showing all 80 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
 
-    <div class="job-card fresh-job" data-company="Stripe">
+    <div class="job-card fresh-job" data-company="Figma">
+        <div class="job-title">
+            <a href="https://boards.greenhouse.io/figma/jobs/5690625004?gh_jid=5690625004" target="_blank">Product Manager, Buzz</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, Buzz | 🏢 Figma | 
+            
+            🔍 Found: 2025-10-30 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/f3b8b3bc-8b29-49d9-9a20-5e252c97afe3" target="_blank">Product Manager, ChatGPT for Work</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-10-30 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="Stripe">
         <div class="job-title">
             <a href="https://stripe.com/jobs/listing/product-manager-compliance-platform/7363602" target="_blank">Product Manager, Compliance Platform</a>
-            🆕
+            
         </div>
         <div class="job-meta">
             📍 Product Manager, Compliance | 🏢 Stripe | 
@@ -624,30 +648,6 @@
     <div class="job-card" data-company="Vercel">
         <div class="job-title">
             <a href="https://vercel.com/careers/product-manager-accounts-5589398004" target="_blank">Product Manager - AccountsHybrid - New York City, San FranciscoRead more</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 New York City, San | 🏢 Vercel | 
-            
-            🔍 Found: 2025-08-24 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Vercel">
-        <div class="job-title">
-            <a href="https://vercel.com/careers/product-manager-agentic-infrastructure-5589448004" target="_blank">Product Manager - Agentic InfrastructureHybrid - New York City, San FranciscoRead more</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 New York City, San | 🏢 Vercel | 
-            
-            🔍 Found: 2025-08-24 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Vercel">
-        <div class="job-title">
-            <a href="https://vercel.com/careers/product-manager-ai-security-5482193004" target="_blank">Product Manager - AI SecurityHybrid - New York City, San FranciscoRead more</a>
             
         </div>
         <div class="job-meta">

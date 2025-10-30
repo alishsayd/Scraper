@@ -1,5 +1,25 @@
 [
   {
+    "company": "Figma",
+    "title": "Product Manager, Buzz",
+    "location": "Product Manager, Buzz",
+    "url": "https://boards.greenhouse.io/figma/jobs/5690625004?gh_jid=5690625004",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-30",
+    "status": "active",
+    "hash": "ff4ff333715b"
+  },
+  {
+    "company": "OpenAI",
+    "title": "Product Manager, ChatGPT for Work",
+    "location": "San Francisco",
+    "url": "https://jobs.ashbyhq.com/openai/f3b8b3bc-8b29-49d9-9a20-5e252c97afe3",
+    "date_posted": "Unknown",
+    "date_found": "2025-10-30",
+    "status": "active",
+    "hash": "9a317fb00d1f"
+  },
+  {
     "company": "Stripe",
     "title": "Product Manager, Compliance Platform",
     "location": "Product Manager, Compliance",

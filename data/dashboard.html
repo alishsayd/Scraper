@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2025-11-03 09:16</p>
+        <p>Last updated: 2025-11-04 09:15</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">84</h2>
+            <h2 id="total-jobs">85</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>1</h2>
         </div>
     </div>
     
@@ -48,14 +48,26 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (26)</option><option value="Figma">Figma (8)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (15)</option><option value="Stripe">Stripe (25)</option><option value="Vercel">Vercel (8)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (26)</option><option value="Figma">Figma (8)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (16)</option><option value="Stripe">Stripe (25)</option><option value="Vercel">Vercel (8)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 84 jobs</div>
+        <div class="results-info" id="results-info">Showing all 85 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/398a407e-a558-4488-a6b9-2e952b6e5124" target="_blank">Product Manager, Model Behavior </a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-11-04 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="Stripe">
         <div class="job-title">
@@ -640,18 +652,6 @@
         </div>
         <div class="job-meta">
             📍 Product Manager, AI | 🏢 Figma | 
-            
-            🔍 Found: 2025-08-24 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Figma">
-        <div class="job-title">
-            <a href="https://boards.greenhouse.io/figma/jobs/5566296004?gh_jid=5566296004" target="_blank">Product Manager, Creation Engine</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Product Manager, Creation | 🏢 Figma | 
             
             🔍 Found: 2025-08-24 | Status: active
         </div>

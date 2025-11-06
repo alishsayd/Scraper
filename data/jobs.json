@@ -1,5 +1,35 @@
 [
   {
+    "company": "Stripe",
+    "title": "Product Manager, Events, Webhooks, & Remote Function",
+    "location": "Product Manager, Events",
+    "url": "https://stripe.com/jobs/listing/product-manager-events-webhooks-remote-function/7378694",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-06",
+    "status": "active",
+    "hash": "083f3c1dddee"
+  },
+  {
+    "company": "Figma",
+    "title": "Product Manager, CMS",
+    "location": "Product Manager, CMS",
+    "url": "https://boards.greenhouse.io/figma/jobs/5694470004?gh_jid=5694470004",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-06",
+    "status": "active",
+    "hash": "ba66db1ba42e"
+  },
+  {
+    "company": "OpenAI",
+    "title": "Product Manager, Safety Systems",
+    "location": "San Francisco",
+    "url": "https://jobs.ashbyhq.com/openai/f6c971e8-453f-4fd1-acc8-aa57e8bd4007",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-06",
+    "status": "active",
+    "hash": "872db94a5978"
+  },
+  {
     "company": "OpenAI",
     "title": "Product Manager, Model Behavior ",
     "location": "San Francisco",

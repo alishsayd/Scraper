@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2025-11-05 09:15</p>
+        <p>Last updated: 2025-11-06 09:15</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">85</h2>
+            <h2 id="total-jobs">88</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>3</h2>
         </div>
     </div>
     
@@ -48,14 +48,50 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (26)</option><option value="Figma">Figma (8)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (16)</option><option value="Stripe">Stripe (25)</option><option value="Vercel">Vercel (8)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (26)</option><option value="Figma">Figma (9)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (17)</option><option value="Stripe">Stripe (26)</option><option value="Vercel">Vercel (8)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 85 jobs</div>
+        <div class="results-info" id="results-info">Showing all 88 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Stripe">
+        <div class="job-title">
+            <a href="https://stripe.com/jobs/listing/product-manager-events-webhooks-remote-function/7378694" target="_blank">Product Manager, Events, Webhooks, & Remote Function</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, Events | 🏢 Stripe | 
+            
+            🔍 Found: 2025-11-06 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Figma">
+        <div class="job-title">
+            <a href="https://boards.greenhouse.io/figma/jobs/5694470004?gh_jid=5694470004" target="_blank">Product Manager, CMS</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, CMS | 🏢 Figma | 
+            
+            🔍 Found: 2025-11-06 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/f6c971e8-453f-4fd1-acc8-aa57e8bd4007" target="_blank">Product Manager, Safety Systems</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2025-11-06 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="OpenAI">
         <div class="job-title">
@@ -618,42 +654,6 @@
             📍 Product Manager, Payment | 🏢 Stripe | 
             
             🔍 Found: 2025-08-26 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Notion">
-        <div class="job-title">
-            <a href="https://jobs.ashbyhq.com/notion/47ad2298-2976-4f9b-ad2d-c1046704fc18" target="_blank">Product Manager, Growth</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 San Francisco, California | 🏢 Notion | 
-            
-            🔍 Found: 2025-08-24 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Figma">
-        <div class="job-title">
-            <a href="https://boards.greenhouse.io/figma/jobs/5585360004?gh_jid=5585360004" target="_blank">Director, Product - Product Foundations</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Director, Product | 🏢 Figma | 
-            
-            🔍 Found: 2025-08-24 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Figma">
-        <div class="job-title">
-            <a href="https://boards.greenhouse.io/figma/jobs/5574247004?gh_jid=5574247004" target="_blank">Product Manager, AI</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Product Manager, AI | 🏢 Figma | 
-            
-            🔍 Found: 2025-08-24 | Status: active
         </div>
     </div>
 

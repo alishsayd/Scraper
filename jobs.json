@@ -1,6 +1,26 @@
 [
   {
     "company": "Figma",
+    "title": "Product Manager, Sites",
+    "location": "Product Manager, Sites",
+    "url": "https://boards.greenhouse.io/figma/jobs/5701839004?gh_jid=5701839004",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-13",
+    "status": "active",
+    "hash": "0a525ff439c8"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Claude CodeNewSan Francisco, CA | Seattle, WA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4985920008",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-13",
+    "status": "active",
+    "hash": "fb7522e10c1d"
+  },
+  {
+    "company": "Figma",
     "title": "Product Manager, Growth",
     "location": "Product Manager, Growth",
     "url": "https://boards.greenhouse.io/figma/jobs/5693075004?gh_jid=5693075004",

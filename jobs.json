@@ -1,6 +1,26 @@
 [
   {
     "company": "OpenAI",
+    "title": "Product Manager, Enterprise Platform",
+    "location": "San Francisco",
+    "url": "https://jobs.ashbyhq.com/openai/225bc20d-8c6b-4ad1-9ec3-b50929531b67",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-20",
+    "status": "active",
+    "hash": "ddfebe85502b"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Claude CodeSan Francisco, CA | Seattle, WA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4985920008",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-20",
+    "status": "active",
+    "hash": "9fa300406ad6"
+  },
+  {
+    "company": "OpenAI",
     "title": "Product Manager, Data Platform",
     "location": "San Francisco",
     "url": "https://jobs.ashbyhq.com/openai/62762da5-4d32-4851-8568-489d3bf14e31",

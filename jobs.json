@@ -1,6 +1,26 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, Invoicing",
+    "location": "Product Manager, Invoicing",
+    "url": "https://stripe.com/jobs/listing/product-manager-invoicing/7424448",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-26",
+    "status": "active",
+    "hash": "ead208b4fe41"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Agent Platform (MCP)San Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4978689008",
+    "date_posted": "Unknown",
+    "date_found": "2025-11-26",
+    "status": "active",
+    "hash": "a27f6aaeccdb"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager, Terminal Device Expansion",
     "location": "Product Manager, Terminal",
     "url": "https://stripe.com/jobs/listing/product-manager-terminal-device-expansion/7397265",

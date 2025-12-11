@@ -1,5 +1,35 @@
 [
   {
+    "company": "Stripe",
+    "title": "Product Manager, Risk UX",
+    "location": "Product Manager, Risk",
+    "url": "https://stripe.com/jobs/listing/product-manager-risk-ux/7407030",
+    "date_posted": "Unknown",
+    "date_found": "2025-12-11",
+    "status": "active",
+    "hash": "8190caaacb8f"
+  },
+  {
+    "company": "OpenAI",
+    "title": "Product Manager, Integrity",
+    "location": "London, UK - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/11ef39d5-d230-414b-9f3e-a0624efa5b11",
+    "date_posted": "Unknown",
+    "date_found": "2025-12-11",
+    "status": "active",
+    "hash": "8ca1463b54e8"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Claude Code Growthtags.newSan Francisco, CA | New York City, NY | Seattle, WA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5024981008",
+    "date_posted": "Unknown",
+    "date_found": "2025-12-11",
+    "status": "active",
+    "hash": "d6f3022c16d6"
+  },
+  {
     "company": "Anthropic",
     "title": "Product Manager, Claude Code GrowthNewSan Francisco, CA | New York City, NY | Seattle, WA",
     "location": "Unknown",

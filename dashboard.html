@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2025-12-16 09:19</p>
+        <p>Last updated: 2025-12-17 09:20</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">108</h2>
+            <h2 id="total-jobs">109</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>1</h2>
         </div>
     </div>
     
@@ -48,14 +48,26 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (35)</option><option value="Figma">Figma (11)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (21)</option><option value="Stripe">Stripe (31)</option><option value="Vercel">Vercel (8)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (36)</option><option value="Figma">Figma (11)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (21)</option><option value="Stripe">Stripe (31)</option><option value="Vercel">Vercel (8)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 108 jobs</div>
+        <div class="results-info" id="results-info">Showing all 109 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5024981008" target="_blank">Product Manager, Claude Code GrowthSan Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-12-17 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="Stripe">
         <div class="job-title">
@@ -642,18 +654,6 @@
             📍 Unknown | 🏢 Anthropic | 
             
             🔍 Found: 2025-09-30 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Vercel">
-        <div class="job-title">
-            <a href="https://vercel.com/careers/product-manager-pricing-5548086004" target="_blank">Product Manager - PricingHybrid - New York City, San FranciscoRead more</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 New York City, San | 🏢 Vercel | 
-            
-            🔍 Found: 2025-09-27 | Status: active
         </div>
     </div>
 

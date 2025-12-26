@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2025-12-25 09:16</p>
+        <p>Last updated: 2025-12-26 09:15</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">112</h2>
+            <h2 id="total-jobs">113</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>1</h2>
         </div>
     </div>
     
@@ -48,14 +48,26 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (38)</option><option value="Figma">Figma (11)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (21)</option><option value="Stripe">Stripe (32)</option><option value="Vercel">Vercel (8)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (39)</option><option value="Figma">Figma (11)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (21)</option><option value="Stripe">Stripe (32)</option><option value="Vercel">Vercel (8)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 112 jobs</div>
+        <div class="results-info" id="results-info">Showing all 113 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5042055008" target="_blank">Product Lead, ConsumerSan Francisco, CA | New York City, NY</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2025-12-26 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="Anthropic">
         <div class="job-title">
@@ -636,18 +648,6 @@
     <div class="job-card" data-company="Anthropic">
         <div class="job-title">
             <a href="https://job-boards.greenhouse.io/anthropic/jobs/4933792008" target="_blank">Product Manager, Researchtags.newSan Francisco, CA | New York City, NY</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2025-10-03 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4932942008" target="_blank">Product Manager, Safeguardstags.newSan Francisco, CA</a>
             
         </div>
         <div class="job-meta">

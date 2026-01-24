@@ -1,5 +1,25 @@
 [
   {
+    "company": "OpenAI",
+    "title": "Product Manager, API Model Behavior",
+    "location": "San Francisco - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/9c7a4984-4367-425c-8a8b-87dad1fbb596",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-24",
+    "status": "active",
+    "hash": "aa22967b50e5"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Revenue PlatformNewNew York City, NY; Remote-Friendly (Travel Required) | San Francisco, CA; San Francisco, CA; Seattle, WA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5077197008",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-24",
+    "status": "active",
+    "hash": "101d31315c87"
+  },
+  {
     "company": "Stripe",
     "title": "Product Manager, ML Foundations and GenAI",
     "location": "Product Manager, ML",

@@ -1,6 +1,36 @@
 [
   {
     "company": "Vercel",
+    "title": "Director, Product FoundationsHybrid - San FranciscoRead more",
+    "location": "Director, Product",
+    "url": "https://vercel.com/careers/director-product-foundations-5781036004",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-27",
+    "status": "active",
+    "hash": "d9e263b33091"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Research Product Manager, LabsNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5096878008",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-27",
+    "status": "active",
+    "hash": "87ef47d071fb"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Research Product Manager, Model BehaviorsNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097067008",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-27",
+    "status": "active",
+    "hash": "8f1fca6e34e5"
+  },
+  {
+    "company": "Vercel",
     "title": "Director, Product CounselingHybrid - San FranciscoRead more",
     "location": "Director, Product",
     "url": "https://vercel.com/careers/director-product-counseling-5691965004",

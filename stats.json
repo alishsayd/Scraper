@@ -1,6 +1,6 @@
 {
-  "total_jobs_found": 126,
-  "last_run": "2026-01-27 09:25",
+  "total_jobs_found": 127,
+  "last_run": "2026-01-28 09:27",
   "companies_scraped": {
     "Stripe": "https://stripe.com/jobs/search?query=product+manager",
     "Notion": "https://www.notion.com/careers?department=product-management#open-positions",
@@ -14,11 +14,6 @@
     "Netflix": "https://explore.jobs.netflix.net/careers?query=Product%20Management"
   },
   "run_history": [
-    {
-      "date": "2025-12-29 09:22",
-      "new_jobs": 0,
-      "companies_scraped": 10
-    },
     {
       "date": "2025-12-30 09:18",
       "new_jobs": 0,
@@ -162,6 +157,11 @@
     {
       "date": "2026-01-27 09:25",
       "new_jobs": 3,
+      "companies_scraped": 10
+    },
+    {
+      "date": "2026-01-28 09:27",
+      "new_jobs": 5,
       "companies_scraped": 10
     }
   ]

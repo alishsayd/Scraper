@@ -1,6 +1,56 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, Banking as a Service",
+    "location": "Product Manager, Banking",
+    "url": "https://stripe.com/jobs/listing/product-manager-banking-as-a-service/7561053",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-29",
+    "status": "active",
+    "hash": "c9209d32eced"
+  },
+  {
+    "company": "OpenAI",
+    "title": "Product Manager, Private Computing & Encryption",
+    "location": "San Francisco",
+    "url": "https://jobs.ashbyhq.com/openai/4a9ce666-e362-4f76-8089-8af255d48398",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-29",
+    "status": "active",
+    "hash": "61c952c04b5f"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Revenue Platformtags.newNew York City, NY; Remote-Friendly (Travel Required) | San Francisco, CA; San Francisco, CA; Seattle, WA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5077197008",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-29",
+    "status": "active",
+    "hash": "938243a34e34"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Research Product Manager, Labstags.newSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5096878008",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-29",
+    "status": "active",
+    "hash": "9b56344fd543"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Research Product Manager, Model Behaviorstags.newSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097067008",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-29",
+    "status": "active",
+    "hash": "e103be64d70f"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager, AMER Cards",
     "location": "Product Manager, AMER",
     "url": "https://stripe.com/jobs/listing/product-manager-amer-cards/7568269",

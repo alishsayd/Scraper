@@ -1,6 +1,26 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, Financial Connections \u2014 Merchant Experience",
+    "location": "Product Manager, Financial",
+    "url": "https://stripe.com/jobs/listing/product-manager-financial-connections-merchant-experience/7556049",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-30",
+    "status": "active",
+    "hash": "3333b7d2a54e"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Research Product ManagerSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4933792008",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-30",
+    "status": "active",
+    "hash": "dc8cab8bc35f"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager, Banking as a Service",
     "location": "Product Manager, Banking",
     "url": "https://stripe.com/jobs/listing/product-manager-banking-as-a-service/7561053",

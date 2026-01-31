@@ -1,6 +1,26 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, Payments Intelligence",
+    "location": "Product Manager, Payments",
+    "url": "https://stripe.com/jobs/listing/product-manager-payments-intelligence/7580706",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-31",
+    "status": "active",
+    "hash": "1bd1f50d51ca"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Revenue PlatformNew York City, NY; Remote-Friendly (Travel Required) | San Francisco, CA; San Francisco, CA; Seattle, WA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5077197008",
+    "date_posted": "Unknown",
+    "date_found": "2026-01-31",
+    "status": "active",
+    "hash": "a269fbaee188"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager, Financial Connections \u2014 Merchant Experience",
     "location": "Product Manager, Financial",
     "url": "https://stripe.com/jobs/listing/product-manager-financial-connections-merchant-experience/7556049",

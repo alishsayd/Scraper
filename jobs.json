@@ -1,5 +1,35 @@
 [
   {
+    "company": "Anthropic",
+    "title": "Product Lead, HealthcareSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4961007008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-03",
+    "status": "active",
+    "hash": "c1bdb6f0287c"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Research Product Manager, LabsSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5096878008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-03",
+    "status": "active",
+    "hash": "a83001997546"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Research Product Manager, Model BehaviorsSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097067008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-03",
+    "status": "active",
+    "hash": "977c346849b9"
+  },
+  {
     "company": "Stripe",
     "title": "Product Manager, Payments Intelligence",
     "location": "Product Manager, Payments",

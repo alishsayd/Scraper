@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-02-02 09:38</p>
+        <p>Last updated: 2026-02-03 09:32</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">136</h2>
+            <h2 id="total-jobs">139</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>3</h2>
         </div>
     </div>
     
@@ -48,14 +48,50 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (47)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (25)</option><option value="Stripe">Stripe (39)</option><option value="Vercel">Vercel (11)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (50)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (25)</option><option value="Stripe">Stripe (39)</option><option value="Vercel">Vercel (11)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 136 jobs</div>
+        <div class="results-info" id="results-info">Showing all 139 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4961007008" target="_blank">Product Lead, HealthcareSan Francisco, CA | New York City, NY</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-02-03 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5096878008" target="_blank">Research Product Manager, LabsSan Francisco, CA | New York City, NY</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-02-03 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5097067008" target="_blank">Research Product Manager, Model BehaviorsSan Francisco, CA | New York City, NY</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-02-03 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="Stripe">
         <div class="job-title">
@@ -618,42 +654,6 @@
             📍 San Francisco - Hybrid | 🏢 OpenAI | 
             
             🔍 Found: 2025-11-11 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Stripe">
-        <div class="job-title">
-            <a href="https://stripe.com/jobs/listing/product-manager-events-webhooks-remote-functions/7378694" target="_blank">Product Manager, Events, Webhooks, & Remote Functions</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Product Manager, Events | 🏢 Stripe | 
-            
-            🔍 Found: 2025-11-07 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Stripe">
-        <div class="job-title">
-            <a href="https://stripe.com/jobs/listing/product-manager-events-webhooks-remote-function/7378694" target="_blank">Product Manager, Events, Webhooks, & Remote Function</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Product Manager, Events | 🏢 Stripe | 
-            
-            🔍 Found: 2025-11-06 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Figma">
-        <div class="job-title">
-            <a href="https://boards.greenhouse.io/figma/jobs/5694470004?gh_jid=5694470004" target="_blank">Product Manager, CMS</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Product Manager, CMS | 🏢 Figma | 
-            
-            🔍 Found: 2025-11-06 | Status: active
         </div>
     </div>
 

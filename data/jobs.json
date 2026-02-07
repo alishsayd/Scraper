@@ -1,5 +1,35 @@
 [
   {
+    "company": "Stripe",
+    "title": "Product Manager, Commerce Systems",
+    "location": "Product Manager, Commerce",
+    "url": "https://stripe.com/jobs/listing/product-manager-commerce-systems/7561551",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-07",
+    "status": "active",
+    "hash": "e789a9b17703"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Beneficial Deployments)tags.newSan Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-07",
+    "status": "active",
+    "hash": "d1e6b00a83d0"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Privacy)tags.newSan Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097486008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-07",
+    "status": "active",
+    "hash": "880f3e17238f"
+  },
+  {
     "company": "Anthropic",
     "title": "Product Manager, Safeguards (Beneficial Deployments)NewSan Francisco, CA",
     "location": "Unknown",

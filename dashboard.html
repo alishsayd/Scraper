@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-02-09 09:54</p>
+        <p>Last updated: 2026-02-10 09:53</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">145</h2>
+            <h2 id="total-jobs">146</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>1</h2>
         </div>
     </div>
     
@@ -48,14 +48,26 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (55)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (25)</option><option value="Stripe">Stripe (40)</option><option value="Vercel">Vercel (11)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (55)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (25)</option><option value="Stripe">Stripe (41)</option><option value="Vercel">Vercel (11)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 145 jobs</div>
+        <div class="results-info" id="results-info">Showing all 146 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Stripe">
+        <div class="job-title">
+            <a href="https://stripe.com/jobs/listing/product-manager-fraud-risk-aml-bridge/7599875" target="_blank">Product Manager, Fraud Risk / AML, Bridge</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager,  Fraud | 🏢 Stripe | 
+            
+            🔍 Found: 2026-02-10 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="Stripe">
         <div class="job-title">
@@ -642,18 +654,6 @@
             📍 San Francisco | 🏢 OpenAI | 
             
             🔍 Found: 2025-11-19 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/4978689008" target="_blank">Product Manager, Agent Platformtags.newSan Francisco, CA | New York City, NY</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2025-11-18 | Status: active
         </div>
     </div>
 

@@ -1,5 +1,25 @@
 [
   {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Beneficial Deployments)San Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-11",
+    "status": "active",
+    "hash": "e796209d23df"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Privacy)San Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097486008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-11",
+    "status": "active",
+    "hash": "d5d8a227b144"
+  },
+  {
     "company": "Stripe",
     "title": "Product Manager, Fraud Risk / AML, Bridge",
     "location": "Product Manager,  Fraud",

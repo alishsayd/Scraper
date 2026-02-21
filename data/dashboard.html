@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-02-20 09:33</p>
+        <p>Last updated: 2026-02-21 09:22</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">154</h2>
+            <h2 id="total-jobs">158</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -48,43 +48,91 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (59)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (26)</option><option value="Stripe">Stripe (42)</option><option value="Vercel">Vercel (13)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (62)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (27)</option><option value="Stripe">Stripe (42)</option><option value="Vercel">Vercel (13)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 154 jobs</div>
+        <div class="results-info" id="results-info">Showing all 158 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
 
-    <div class="job-card fresh-job" data-company="Vercel">
-        <div class="job-title">
-            <a href="https://vercel.com/careers/product-manager-agent-platform-5808590004" target="_blank">Product Manager - Agent PlatformHybrid - New York City, San FranciscoRead more</a>
-            🆕
-        </div>
-        <div class="job-meta">
-            📍 New York City, San | 🏢 Vercel | 
-            
-            🔍 Found: 2026-02-20 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card fresh-job" data-company="Vercel">
-        <div class="job-title">
-            <a href="https://vercel.com/careers/product-manager-dashboard-5808592004" target="_blank">Product Manager - DashboardHybrid - New York City, San FranciscoRead more</a>
-            🆕
-        </div>
-        <div class="job-meta">
-            📍 New York City, San | 🏢 Vercel | 
-            
-            🔍 Found: 2026-02-20 | Status: active
-        </div>
-    </div>
-
     <div class="job-card fresh-job" data-company="OpenAI">
         <div class="job-title">
-            <a href="https://jobs.ashbyhq.com/openai/44bfed8b-dd34-40c9-a807-67637b9d4335" target="_blank">Product Manager, Core Identity</a>
+            <a href="https://jobs.ashbyhq.com/openai/65beff67-9163-42e8-85ca-884ac8fb9a04" target="_blank">Enterprise Product Manager, Indirect Procurement</a>
             🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2026-02-21 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5123082008" target="_blank">Product Management, Researchtags.newSan Francisco, CA | New York City, NY</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-02-21 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5124623008" target="_blank">Product Manager, Compute Platformtags.newSan Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-02-21 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5097490008" target="_blank">Product Manager, Safeguards (High Risk Industry Enablement)San Francisco, CA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-02-21 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/product-manager-agent-platform-5808590004" target="_blank">Product Manager - Agent PlatformHybrid - New York City, San FranciscoRead more</a>
+            
+        </div>
+        <div class="job-meta">
+            📍 New York City, San | 🏢 Vercel | 
+            
+            🔍 Found: 2026-02-20 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/product-manager-dashboard-5808592004" target="_blank">Product Manager - DashboardHybrid - New York City, San FranciscoRead more</a>
+            
+        </div>
+        <div class="job-meta">
+            📍 New York City, San | 🏢 Vercel | 
+            
+            🔍 Found: 2026-02-20 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/44bfed8b-dd34-40c9-a807-67637b9d4335" target="_blank">Product Manager, Core Identity</a>
+            
         </div>
         <div class="job-meta">
             📍 San Francisco | 🏢 OpenAI | 
@@ -93,10 +141,10 @@
         </div>
     </div>
 
-    <div class="job-card fresh-job" data-company="Anthropic">
+    <div class="job-card" data-company="Anthropic">
         <div class="job-title">
             <a href="https://job-boards.greenhouse.io/anthropic/jobs/5124623008" target="_blank">Product Manager, Compute PlatformNewSan Francisco, CA | New York City, NY | Seattle, WA</a>
-            🆕
+            
         </div>
         <div class="job-meta">
             📍 Unknown | 🏢 Anthropic | 
@@ -606,54 +654,6 @@
             📍 Unknown | 🏢 Anthropic | 
             
             🔍 Found: 2025-12-17 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Stripe">
-        <div class="job-title">
-            <a href="https://stripe.com/jobs/listing/product-manager-risk-ux/7407030" target="_blank">Product Manager, Risk UX</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Product Manager, Risk | 🏢 Stripe | 
-            
-            🔍 Found: 2025-12-11 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="OpenAI">
-        <div class="job-title">
-            <a href="https://jobs.ashbyhq.com/openai/11ef39d5-d230-414b-9f3e-a0624efa5b11" target="_blank">Product Manager, Integrity</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 London, UK - Hybrid | 🏢 OpenAI | 
-            
-            🔍 Found: 2025-12-11 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5024981008" target="_blank">Product Manager, Claude Code Growthtags.newSan Francisco, CA | New York City, NY | Seattle, WA</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2025-12-11 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5024981008" target="_blank">Product Manager, Claude Code GrowthNewSan Francisco, CA | New York City, NY | Seattle, WA</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2025-12-10 | Status: active
         </div>
     </div>
 

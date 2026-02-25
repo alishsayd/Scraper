@@ -1,5 +1,25 @@
 [
   {
+    "company": "Anthropic",
+    "title": "Product Management, ResearchSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5123082008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-25",
+    "status": "active",
+    "hash": "36c17950835c"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, ConsumerNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5127559008",
+    "date_posted": "Unknown",
+    "date_found": "2026-02-25",
+    "status": "active",
+    "hash": "6abd5893b6f8"
+  },
+  {
     "company": "OpenAI",
     "title": "Enterprise Product Manager, Indirect Procurement",
     "location": "San Francisco",

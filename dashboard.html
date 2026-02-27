@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-02-26 09:40</p>
+        <p>Last updated: 2026-02-27 09:33</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">161</h2>
+            <h2 id="total-jobs">162</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -48,19 +48,31 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (64)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (28)</option><option value="Stripe">Stripe (42)</option><option value="Vercel">Vercel (13)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (65)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (28)</option><option value="Stripe">Stripe (42)</option><option value="Vercel">Vercel (13)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 161 jobs</div>
+        <div class="results-info" id="results-info">Showing all 162 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
 
-    <div class="job-card fresh-job" data-company="OpenAI">
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5124623008" target="_blank">Product Manager, Compute PlatformSan Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-02-27 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="OpenAI">
         <div class="job-title">
             <a href="https://jobs.ashbyhq.com/openai/fc38c6bf-5330-435c-99b6-1bcf1f5829a8" target="_blank">Product Manager, API Agents</a>
-            🆕
+            
         </div>
         <div class="job-meta">
             📍 San Francisco | 🏢 OpenAI | 
@@ -642,18 +654,6 @@
             📍 Unknown | 🏢 Anthropic | 
             
             🔍 Found: 2025-12-26 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5042055008" target="_blank">Product Lead, ConsumerNewSan Francisco, CA | New York City, NY</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2025-12-21 | Status: active
         </div>
     </div>
 

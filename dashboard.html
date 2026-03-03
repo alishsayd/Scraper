@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-03-02 09:39</p>
+        <p>Last updated: 2026-03-03 09:33</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">169</h2>
+            <h2 id="total-jobs">170</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -48,19 +48,31 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (66)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (28)</option><option value="Stripe">Stripe (42)</option><option value="Vercel">Vercel (19)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (66)</option><option value="Figma">Figma (12)</option><option value="Notion">Notion (2)</option><option value="OpenAI">OpenAI (28)</option><option value="Stripe">Stripe (43)</option><option value="Vercel">Vercel (19)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 169 jobs</div>
+        <div class="results-info" id="results-info">Showing all 170 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
 
-    <div class="job-card fresh-job" data-company="Anthropic">
+    <div class="job-card fresh-job" data-company="Stripe">
+        <div class="job-title">
+            <a href="https://stripe.com/jobs/listing/product-manager-global-expansion/7570242" target="_blank">Product Manager, Global Expansion</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, Global | 🏢 Stripe | 
+            
+            🔍 Found: 2026-03-03 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="Anthropic">
         <div class="job-title">
             <a href="https://job-boards.greenhouse.io/anthropic/jobs/5127559008" target="_blank">Product Manager, Consumertags.newSan Francisco, CA | New York City, NY</a>
-            🆕
+            
         </div>
         <div class="job-meta">
             📍 Unknown | 🏢 Anthropic | 
@@ -642,18 +654,6 @@
             📍 Unknown | 🏢 Anthropic | 
             
             🔍 Found: 2026-01-24 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Stripe">
-        <div class="job-title">
-            <a href="https://stripe.com/jobs/listing/product-manager-ml-foundations-and-genai/7517535" target="_blank">Product Manager, ML Foundations and GenAI</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Product Manager, ML | 🏢 Stripe | 
-            
-            🔍 Found: 2026-01-22 | Status: active
         </div>
     </div>
 

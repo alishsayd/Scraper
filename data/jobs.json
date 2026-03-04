@@ -1,5 +1,25 @@
 [
   {
+    "company": "Linear",
+    "title": "Product ManagerEurope, North AmericaLearn more\u2192",
+    "location": "Europe, North",
+    "url": "https://linear.app/careers/86abcce0-04b2-405c-9a8e-e0ca84813914",
+    "date_posted": "Unknown",
+    "date_found": "2026-03-04",
+    "status": "active",
+    "hash": "78f2440aa6ce"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, ConsumerSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5127559008",
+    "date_posted": "Unknown",
+    "date_found": "2026-03-04",
+    "status": "active",
+    "hash": "cb93e3392fe3"
+  },
+  {
     "company": "Stripe",
     "title": "Product Manager, Global Expansion",
     "location": "Product Manager, Global",

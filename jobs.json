@@ -1,5 +1,25 @@
 [
   {
+    "company": "Stripe",
+    "title": "Product Manager, Link Consumer Product",
+    "location": "Product Manager, Link",
+    "url": "https://stripe.com/jobs/listing/product-manager-link-consumer-product/7392697",
+    "date_posted": "Unknown",
+    "date_found": "2026-03-18",
+    "status": "active",
+    "hash": "9c95de990868"
+  },
+  {
+    "company": "Notion",
+    "title": "Product Manager, EnterpriseNew York, New York; San Francisco, California",
+    "location": "New York, New",
+    "url": "https://jobs.ashbyhq.com/notion/35785e61-c4c3-44ec-a401-6741d89dd16a",
+    "date_posted": "Unknown",
+    "date_found": "2026-03-18",
+    "status": "active",
+    "hash": "e0e6d020314e"
+  },
+  {
     "company": "OpenAI",
     "title": "Product Manager, Bio Safety",
     "location": "San Francisco - OnSite",

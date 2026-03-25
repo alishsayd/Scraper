@@ -1,6 +1,26 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, Capital",
+    "location": "Product Manager, Capital",
+    "url": "https://stripe.com/jobs/listing/product-manager-capital/7721834",
+    "date_posted": "Unknown",
+    "date_found": "2026-03-25",
+    "status": "active",
+    "hash": "aaf43c3af58c"
+  },
+  {
+    "company": "Figma",
+    "title": "Product Manager, AI Platform",
+    "location": "Product Manager, AI",
+    "url": "https://boards.greenhouse.io/figma/jobs/5830640004?gh_jid=5830640004",
+    "date_posted": "Unknown",
+    "date_found": "2026-03-25",
+    "status": "active",
+    "hash": "8362cebe665e"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager - Fraud Risk / AML, Bridge",
     "location": "AML, Bridge",
     "url": "https://stripe.com/jobs/listing/product-manager-fraud-risk-aml-bridge/7733239",

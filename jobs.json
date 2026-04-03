@@ -1,6 +1,56 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, Revenue and Financial Automation",
+    "location": "Product Manager, Revenue",
+    "url": "https://stripe.com/jobs/listing/product-manager-revenue-and-financial-automation/6473321",
+    "date_posted": "Unknown",
+    "date_found": "2026-04-03",
+    "status": "active",
+    "hash": "8eda52fd913f"
+  },
+  {
+    "company": "Stripe",
+    "title": "Product Manager, Risk & Compliance",
+    "location": "Product Manager, Risk",
+    "url": "https://stripe.com/jobs/listing/product-manager-risk-compliance/7625842",
+    "date_posted": "Unknown",
+    "date_found": "2026-04-03",
+    "status": "active",
+    "hash": "4fb880e08f9c"
+  },
+  {
+    "company": "Stripe",
+    "title": "Product Manager, Terminal - Unified Commerce",
+    "location": "Product Manager, Terminal",
+    "url": "https://stripe.com/jobs/listing/product-manager-terminal-unified-commerce/6683456",
+    "date_posted": "Unknown",
+    "date_found": "2026-04-03",
+    "status": "active",
+    "hash": "90bc26efeae4"
+  },
+  {
+    "company": "Stripe",
+    "title": "Product Manager: New Grad Accelerator",
+    "location": "Remote/Unknown",
+    "url": "https://stripe.com/jobs/listing/product-manager-new-grad-accelerator/7737124",
+    "date_posted": "Unknown",
+    "date_found": "2026-04-03",
+    "status": "active",
+    "hash": "bc8fa1bd5793"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Multi-Cloud Growth - GoogleSan Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5153924008",
+    "date_posted": "Unknown",
+    "date_found": "2026-04-03",
+    "status": "active",
+    "hash": "c0baeddd9722"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager, Payments",
     "location": "Product Manager, Payments",
     "url": "https://stripe.com/jobs/listing/product-manager-payments/7176530",

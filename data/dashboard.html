@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-04-07 10:00</p>
+        <p>Last updated: 2026-04-08 10:00</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">190</h2>
+            <h2 id="total-jobs">191</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>1</h2>
         </div>
     </div>
     
@@ -48,14 +48,26 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (71)</option><option value="Figma">Figma (13)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (31)</option><option value="Stripe">Stripe (52)</option><option value="Vercel">Vercel (19)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (72)</option><option value="Figma">Figma (13)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (31)</option><option value="Stripe">Stripe (52)</option><option value="Vercel">Vercel (19)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 190 jobs</div>
+        <div class="results-info" id="results-info">Showing all 191 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5153773008" target="_blank">Product Manager, Claude Growth (Monetization)New York City, NY | Seattle, WA; San Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-04-08 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="Stripe">
         <div class="job-title">
@@ -642,18 +654,6 @@
             📍 Unknown | 🏢 Anthropic | 
             
             🔍 Found: 2026-02-06 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5097490008" target="_blank">Product Manager, Safeguards (Beneficial Deployment)NewSan Francisco, CA</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2026-02-04 | Status: active
         </div>
     </div>
 

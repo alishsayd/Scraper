@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-04-15 10:09</p>
+        <p>Last updated: 2026-04-16 10:08</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">196</h2>
+            <h2 id="total-jobs">198</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>1</h2>
+            <h2>2</h2>
         </div>
     </div>
     
@@ -48,19 +48,43 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (76)</option><option value="Figma">Figma (13)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (31)</option><option value="Stripe">Stripe (53)</option><option value="Vercel">Vercel (19)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (77)</option><option value="Figma">Figma (13)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (32)</option><option value="Stripe">Stripe (53)</option><option value="Vercel">Vercel (19)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 196 jobs</div>
+        <div class="results-info" id="results-info">Showing all 198 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
 
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/fbc7ebaf-3a26-406d-9ff6-f166f3e246a2" target="_blank">Product Manager, Safety Measurement</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2026-04-16 | Status: active
+        </div>
+    </div>
+
     <div class="job-card fresh-job" data-company="Anthropic">
         <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5181852008" target="_blank">Product Manager, API Growthtags.newRemote-Friendly (Travel-Required) | San Francisco, CA | Seattle, WA; San Francisco, CA | New York City, NY | Seattle, WA</a>
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5181852008" target="_blank">Product Manager, API GrowthNewRemote-Friendly (Travel-Required) | San Francisco, CA | Seattle, WA; San Francisco, CA | New York City, NY | Seattle, WA</a>
             🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-04-16 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5181852008" target="_blank">Product Manager, API Growthtags.newRemote-Friendly (Travel-Required) | San Francisco, CA | Seattle, WA; San Francisco, CA | New York City, NY | Seattle, WA</a>
+            
         </div>
         <div class="job-meta">
             📍 Unknown | 🏢 Anthropic | 
@@ -630,30 +654,6 @@
             📍 Product Manager, Bank | 🏢 Stripe | 
             
             🔍 Found: 2026-02-12 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5097490008" target="_blank">Product Manager, Safeguards (Beneficial Deployments)San Francisco, CA</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2026-02-11 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5097486008" target="_blank">Product Manager, Safeguards (Privacy)San Francisco, CA</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2026-02-11 | Status: active
         </div>
     </div>
 

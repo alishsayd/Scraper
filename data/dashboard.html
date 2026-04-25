@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-04-24 10:16</p>
+        <p>Last updated: 2026-04-25 09:43</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">203</h2>
+            <h2 id="total-jobs">204</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -48,19 +48,31 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (78)</option><option value="Figma">Figma (13)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (34)</option><option value="Stripe">Stripe (55)</option><option value="Vercel">Vercel (19)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (78)</option><option value="Figma">Figma (13)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (34)</option><option value="Stripe">Stripe (55)</option><option value="Vercel">Vercel (20)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 203 jobs</div>
+        <div class="results-info" id="results-info">Showing all 204 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
 
-    <div class="job-card fresh-job" data-company="OpenAI">
+    <div class="job-card fresh-job" data-company="Vercel">
+        <div class="job-title">
+            <a href="https://vercel.com/careers/pricing-product-manager-5979660004" target="_blank">Pricing Product ManagerSan FranciscoRead more</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 Vercel | 
+            
+            🔍 Found: 2026-04-25 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="OpenAI">
         <div class="job-title">
             <a href="https://jobs.ashbyhq.com/openai/fca0f787-f3c5-4528-bb20-803dba07501a" target="_blank">Enterprise Product Manager - AI Solutions</a>
-            🆕
+            
         </div>
         <div class="job-meta">
             📍 San Francisco - Hybrid | 🏢 OpenAI | 
@@ -642,18 +654,6 @@
             📍 Unknown | 🏢 Anthropic | 
             
             🔍 Found: 2026-02-21 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Vercel">
-        <div class="job-title">
-            <a href="https://vercel.com/careers/product-manager-agent-platform-5808590004" target="_blank">Product Manager - Agent PlatformHybrid - New York City, San FranciscoRead more</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 New York City, San | 🏢 Vercel | 
-            
-            🔍 Found: 2026-02-20 | Status: active
         </div>
     </div>
 

@@ -1,5 +1,25 @@
 [
   {
+    "company": "OpenAI",
+    "title": "Deployed Product Manager, Codex ",
+    "location": "San Francisco - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/60d1420a-8aa3-4d87-847e-e7b73d9d9a0c",
+    "date_posted": "Unknown",
+    "date_found": "2026-05-01",
+    "status": "active",
+    "hash": "e8434344620f"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Management, Human Data PlatformNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5195866008",
+    "date_posted": "Unknown",
+    "date_found": "2026-05-01",
+    "status": "active",
+    "hash": "a98f330add9a"
+  },
+  {
     "company": "Anthropic",
     "title": "[PIP] Product Management, Human Data PlatformNewSan Francisco, CA | New York City, NY",
     "location": "Unknown",

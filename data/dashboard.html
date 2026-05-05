@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-05-04 10:57</p>
+        <p>Last updated: 2026-05-05 10:28</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">210</h2>
+            <h2 id="total-jobs">213</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>3</h2>
         </div>
     </div>
     
@@ -48,14 +48,50 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (80)</option><option value="Figma">Figma (13)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (38)</option><option value="Stripe">Stripe (55)</option><option value="Vercel">Vercel (20)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (81)</option><option value="Figma">Figma (13)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (40)</option><option value="Stripe">Stripe (55)</option><option value="Vercel">Vercel (20)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 210 jobs</div>
+        <div class="results-info" id="results-info">Showing all 213 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/f6494cf8-efbc-4dbe-ae76-662088b4f32c" target="_blank">Product Manager, Cyber Safety</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco | 🏢 OpenAI | 
+            
+            🔍 Found: 2026-05-05 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="OpenAI">
+        <div class="job-title">
+            <a href="https://jobs.ashbyhq.com/openai/11a61b5b-3c1f-472f-93ec-4cb3e37e5ae8" target="_blank">Product Manager, Families</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 San Francisco - Hybrid | 🏢 OpenAI | 
+            
+            🔍 Found: 2026-05-05 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card fresh-job" data-company="Anthropic">
+        <div class="job-title">
+            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5181852008" target="_blank">Product Manager, API GrowthSan Francisco, CA | New York City, NY | Seattle, WA</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Unknown | 🏢 Anthropic | 
+            
+            🔍 Found: 2026-05-05 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="OpenAI">
         <div class="job-title">
@@ -618,42 +654,6 @@
             📍 Agent PlatformNew York City, San | 🏢 Vercel | 
             
             🔍 Found: 2026-02-28 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Vercel">
-        <div class="job-title">
-            <a href="https://vercel.com/careers/product-manager-dashboard-5808592004" target="_blank">Product Manager - DashboardNew York City, San FranciscoRead more</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 DashboardNew York City, San | 🏢 Vercel | 
-            
-            🔍 Found: 2026-02-28 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5124623008" target="_blank">Product Manager, Compute PlatformSan Francisco, CA | New York City, NY | Seattle, WA</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
-            
-            🔍 Found: 2026-02-27 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="OpenAI">
-        <div class="job-title">
-            <a href="https://jobs.ashbyhq.com/openai/fc38c6bf-5330-435c-99b6-1bcf1f5829a8" target="_blank">Product Manager, API Agents</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 San Francisco | 🏢 OpenAI | 
-            
-            🔍 Found: 2026-02-26 | Status: active
         </div>
     </div>
 

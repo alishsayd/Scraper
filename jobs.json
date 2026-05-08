@@ -1,5 +1,35 @@
 [
   {
+    "company": "Stripe",
+    "title": "Product Manager, Startup Products",
+    "location": "Product Manager, Startup",
+    "url": "https://stripe.com/jobs/listing/product-manager-startup-products/7901987",
+    "date_posted": "Unknown",
+    "date_found": "2026-05-08",
+    "status": "active",
+    "hash": "5e13f54a4980"
+  },
+  {
+    "company": "Figma",
+    "title": "Product Manager, AI Growth",
+    "location": "Product Manager, AI",
+    "url": "https://boards.greenhouse.io/figma/jobs/5989185004?gh_jid=5989185004",
+    "date_posted": "Unknown",
+    "date_found": "2026-05-08",
+    "status": "active",
+    "hash": "9041aa197dba"
+  },
+  {
+    "company": "OpenAI",
+    "title": "Product Manager, Sensitive Deployments",
+    "location": "San Francisco - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/05a8cae8-81bd-4f7b-bc48-41ef1bd67e5d",
+    "date_posted": "Unknown",
+    "date_found": "2026-05-08",
+    "status": "active",
+    "hash": "79832f728643"
+  },
+  {
     "company": "OpenAI",
     "title": "Ads Product Manager",
     "location": "San Francisco",

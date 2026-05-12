@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-05-11 11:58</p>
+        <p>Last updated: 2026-05-12 11:13</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">219</h2>
+            <h2 id="total-jobs">220</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -40,7 +40,7 @@
         </div>
         <div class="stat-box">
             <h3>🆕 Today's New Jobs</h3>
-            <h2>0</h2>
+            <h2>1</h2>
         </div>
     </div>
     
@@ -48,14 +48,26 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (82)</option><option value="Figma">Figma (14)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (43)</option><option value="Stripe">Stripe (56)</option><option value="Vercel">Vercel (20)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (82)</option><option value="Figma">Figma (14)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (3)</option><option value="OpenAI">OpenAI (43)</option><option value="Stripe">Stripe (57)</option><option value="Vercel">Vercel (20)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 219 jobs</div>
+        <div class="results-info" id="results-info">Showing all 220 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
+
+    <div class="job-card fresh-job" data-company="Stripe">
+        <div class="job-title">
+            <a href="https://stripe.com/jobs/listing/product-manager-sail-core/7913698" target="_blank">Product Manager, Sail Core</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Product Manager, Sail | 🏢 Stripe | 
+            
+            🔍 Found: 2026-05-12 | Status: active
+        </div>
+    </div>
 
     <div class="job-card" data-company="Stripe">
         <div class="job-title">
@@ -642,18 +654,6 @@
             📍 Unknown | 🏢 Anthropic | 
             
             🔍 Found: 2026-03-04 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Stripe">
-        <div class="job-title">
-            <a href="https://stripe.com/jobs/listing/product-manager-global-expansion/7570242" target="_blank">Product Manager, Global Expansion</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Product Manager, Global | 🏢 Stripe | 
-            
-            🔍 Found: 2026-03-03 | Status: active
         </div>
     </div>
 

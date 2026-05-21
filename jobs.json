@@ -1,6 +1,36 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, Ecosystem Risk",
+    "location": "Product Manager, Ecosystem",
+    "url": "https://stripe.com/jobs/listing/product-manager-ecosystem-risk/7943244",
+    "date_posted": "Unknown",
+    "date_found": "2026-05-21",
+    "status": "active",
+    "hash": "ead021fb94e9"
+  },
+  {
+    "company": "Notion",
+    "title": "Product Manager, WorkspacesNew York, New York; San Francisco, California",
+    "location": "New York, New",
+    "url": "https://jobs.ashbyhq.com/notion/35785e61-c4c3-44ec-a401-6741d89dd16a",
+    "date_posted": "Unknown",
+    "date_found": "2026-05-21",
+    "status": "active",
+    "hash": "01f6728e203b"
+  },
+  {
+    "company": "OpenAI",
+    "title": "Technical Product Manager, GTM Systems",
+    "location": "San Francisco - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/b09be44d-3bf8-40a4-84cd-b7539fc73726",
+    "date_posted": "Unknown",
+    "date_found": "2026-05-21",
+    "status": "active",
+    "hash": "603b24bc7682"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager, Growth AI Outreach Motion",
     "location": "Product Manager, Growth",
     "url": "https://stripe.com/jobs/listing/product-manager-growth-ai-outreach-motion/7809139",

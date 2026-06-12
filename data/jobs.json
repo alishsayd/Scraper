@@ -1,6 +1,56 @@
 [
   {
     "company": "OpenAI",
+    "title": "Product Manager, Shopping",
+    "location": "San Francisco - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/df8a1d73-58b9-4571-86f5-da9a12155fbb",
+    "date_posted": "Unknown",
+    "date_found": "2026-06-12",
+    "status": "active",
+    "hash": "aba34a67757f"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Claude Code Model PerformanceSan Francisco, CA | Seattle, WA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5247640008",
+    "date_posted": "Unknown",
+    "date_found": "2026-06-12",
+    "status": "active",
+    "hash": "35c0c3de72e0"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, EnterpriseNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5253339008",
+    "date_posted": "Unknown",
+    "date_found": "2026-06-12",
+    "status": "active",
+    "hash": "63d1f8088bf8"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, GTM ExperiencesNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5254623008",
+    "date_posted": "Unknown",
+    "date_found": "2026-06-12",
+    "status": "active",
+    "hash": "9b5ea6682760"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards Rare HarmsNewSan Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5139628008",
+    "date_posted": "Unknown",
+    "date_found": "2026-06-12",
+    "status": "active",
+    "hash": "078d3cd77a69"
+  },
+  {
+    "company": "OpenAI",
     "title": "Product Manager, ChatGPT Healthcare",
     "location": "San Francisco - Hybrid",
     "url": "https://jobs.ashbyhq.com/openai/e470ba2c-b649-4a43-8650-3210bd7ca4d3",

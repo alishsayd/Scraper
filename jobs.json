@@ -1,6 +1,36 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, Global Marketplaces",
+    "location": "Product Manager, Global",
+    "url": "https://stripe.com/jobs/listing/product-manager-global-marketplaces/8009671",
+    "date_posted": "Unknown",
+    "date_found": "2026-06-19",
+    "status": "active",
+    "hash": "c30e8b075950"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, GTM ExperiencesSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5254623008",
+    "date_posted": "Unknown",
+    "date_found": "2026-06-19",
+    "status": "active",
+    "hash": "86de3e2828b6"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards Rare HarmsSan Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5139628008",
+    "date_posted": "Unknown",
+    "date_found": "2026-06-19",
+    "status": "active",
+    "hash": "e2c4af90935e"
+  },
+  {
+    "company": "Stripe",
     "title": "Product Manager, Link - Consumer",
     "location": "Product Manager, Link",
     "url": "https://stripe.com/jobs/listing/product-manager-link-consumer/7392697",

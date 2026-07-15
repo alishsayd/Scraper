@@ -1,5 +1,35 @@
 [
   {
+    "company": "Stripe",
+    "title": "AI Product Manager, Professional Services",
+    "location": "AI Product Manager, Professional",
+    "url": "https://stripe.com/jobs/listing/ai-product-manager-professional-services/8064526",
+    "date_posted": "Unknown",
+    "date_found": "2026-07-15",
+    "status": "active",
+    "hash": "11ed9f54f90e"
+  },
+  {
+    "company": "Stripe",
+    "title": "Product Manager, Cash Platform",
+    "location": "Product Manager, Cash",
+    "url": "https://stripe.com/jobs/listing/product-manager-cash-platform/8064900",
+    "date_posted": "Unknown",
+    "date_found": "2026-07-15",
+    "status": "active",
+    "hash": "7e1d02006dc6"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Child Safety)San Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5164820008",
+    "date_posted": "Unknown",
+    "date_found": "2026-07-15",
+    "status": "active",
+    "hash": "1d8860c54c59"
+  },
+  {
     "company": "OpenAI",
     "title": "Product Manager, Codex Security Controls & Partner Interfaces",
     "location": "Remote - US - Remote",

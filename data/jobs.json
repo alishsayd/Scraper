@@ -1,6 +1,36 @@
 [
   {
     "company": "Stripe",
+    "title": "Product Manager, E-Invoicing",
+    "location": "Remote/Unknown",
+    "url": "https://stripe.com/jobs/listing/product-manager-e-invoicing/8041655",
+    "date_posted": "Unknown",
+    "date_found": "2026-07-16",
+    "status": "active",
+    "hash": "e0a5663f9492"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, EnterpriseSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5253339008",
+    "date_posted": "Unknown",
+    "date_found": "2026-07-16",
+    "status": "active",
+    "hash": "82d141e431a8"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Verticals)San Francisco, CA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+    "date_posted": "Unknown",
+    "date_found": "2026-07-16",
+    "status": "active",
+    "hash": "857e57a94656"
+  },
+  {
+    "company": "Stripe",
     "title": "AI Product Manager, Professional Services",
     "location": "AI Product Manager, Professional",
     "url": "https://stripe.com/jobs/listing/ai-product-manager-professional-services/8064526",

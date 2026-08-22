@@ -1,5 +1,25 @@
 [
   {
+    "company": "OpenAI",
+    "title": "Product Manager, Youth",
+    "location": "San Francisco - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/cc0d0d86-eb9d-44a0-a6a4-42bbb6066b4b",
+    "date_posted": "Unknown",
+    "date_found": "2026-08-22",
+    "status": "active",
+    "hash": "438ffbe716ee"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, CybersecurityNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5393526008",
+    "date_posted": "Unknown",
+    "date_found": "2026-08-22",
+    "status": "active",
+    "hash": "5dd9d1acfad2"
+  },
+  {
     "company": "Vercel",
     "title": "Product Manager, ObservabilityNew York CityRead more",
     "location": "Product Manager, ObservabilityNew",

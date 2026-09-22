@@ -1,5 +1,35 @@
 [
   {
+    "company": "OpenAI",
+    "title": "Product Manager, Enterprise Identity ",
+    "location": "San Francisco - Hybrid",
+    "url": "https://jobs.ashbyhq.com/openai/83f6d415-9462-4afc-a539-ca8d996e011a",
+    "date_posted": "Unknown",
+    "date_found": "2026-09-22",
+    "status": "active",
+    "hash": "6a8a719b24b1"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Account Integrity & Abuse)NewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5413576008",
+    "date_posted": "Unknown",
+    "date_found": "2026-09-22",
+    "status": "active",
+    "hash": "f491bea7266d"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Generalist)NewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5400720008",
+    "date_posted": "Unknown",
+    "date_found": "2026-09-22",
+    "status": "active",
+    "hash": "1c547fb6f04f"
+  },
+  {
     "company": "Anthropic",
     "title": "Product Manager, Safe AccessNewSan Francisco, CA | New York City, NY",
     "location": "Unknown",

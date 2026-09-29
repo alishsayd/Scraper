@@ -1,5 +1,35 @@
 [
   {
+    "company": "Vercel",
+    "title": "Product Manager, ComputeSan FranciscoRead more",
+    "location": "Product Manager, ComputeSan",
+    "url": "https://vercel.com/careers/product-manager-compute-6209001004",
+    "date_posted": "Unknown",
+    "date_found": "2026-09-29",
+    "status": "active",
+    "hash": "f6011a691c16"
+  },
+  {
+    "company": "Vercel",
+    "title": "Product Manager, Networking + CDNSan FranciscoRead more",
+    "location": "Product Manager, Networking",
+    "url": "https://vercel.com/careers/product-manager-networking-cdn-6209044004",
+    "date_posted": "Unknown",
+    "date_found": "2026-09-29",
+    "status": "active",
+    "hash": "1ab3f5ba2501"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Safeguards (Generalist)San Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5400720008",
+    "date_posted": "Unknown",
+    "date_found": "2026-09-29",
+    "status": "active",
+    "hash": "1cb163586fd2"
+  },
+  {
     "company": "Anthropic",
     "title": "Product Manager, Safeguards (Account Integrity & Abuse)San Francisco, CA | New York City, NY",
     "location": "Unknown",

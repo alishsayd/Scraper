@@ -1,5 +1,25 @@
 [
   {
+    "company": "OpenAI",
+    "title": "Product Manager, Financial Services",
+    "location": "San Francisco (+ New York City)",
+    "url": "https://jobs.ashbyhq.com/openai/a8210588-a178-4afe-91e7-1fa2d269d2e8",
+    "date_posted": "Unknown",
+    "date_found": "2026-10-07",
+    "status": "active",
+    "hash": "5b00dc87b7dd"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Billingtags.newSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5434361008",
+    "date_posted": "Unknown",
+    "date_found": "2026-10-07",
+    "status": "active",
+    "hash": "157e6c5e2f72"
+  },
+  {
     "company": "Notion",
     "title": "Product ManagerSan Francisco, California",
     "location": "San Francisco, California",

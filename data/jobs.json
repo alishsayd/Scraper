@@ -1,5 +1,35 @@
 [
   {
+    "company": "Figma",
+    "title": "Early Career, Associate Product Manager (2027)",
+    "location": "Early Career, Associate",
+    "url": "https://boards.greenhouse.io/figma/jobs/6180116004?gh_jid=6180116004",
+    "date_posted": "Unknown",
+    "date_found": "2026-10-08",
+    "status": "active",
+    "hash": "2bf2fb8b6cd2"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, BillingNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5434361008",
+    "date_posted": "Unknown",
+    "date_found": "2026-10-08",
+    "status": "active",
+    "hash": "863f6b861457"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Enterprise PrivacyNewSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5434369008",
+    "date_posted": "Unknown",
+    "date_found": "2026-10-08",
+    "status": "active",
+    "hash": "c02ab0fdc643"
+  },
+  {
     "company": "OpenAI",
     "title": "Product Manager, Financial Services",
     "location": "San Francisco (+ New York City)",

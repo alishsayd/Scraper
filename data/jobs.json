@@ -1,5 +1,35 @@
 [
   {
+    "company": "Figma",
+    "title": "Director, Product Communications",
+    "location": "Director, Product",
+    "url": "https://boards.greenhouse.io/figma/jobs/6221563004?gh_jid=6221563004",
+    "date_posted": "Unknown",
+    "date_found": "2026-10-14",
+    "status": "active",
+    "hash": "47349641192c"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Claudetags.newSan Francisco, CA | New York City, NY | Seattle, WA",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5448167008",
+    "date_posted": "Unknown",
+    "date_found": "2026-10-14",
+    "status": "active",
+    "hash": "3f8d35c14df6"
+  },
+  {
+    "company": "Anthropic",
+    "title": "Product Manager, Enterprise Privacytags.newSan Francisco, CA | New York City, NY",
+    "location": "Unknown",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5434369008",
+    "date_posted": "Unknown",
+    "date_found": "2026-10-14",
+    "status": "active",
+    "hash": "4751a8ea821f"
+  },
+  {
     "company": "OpenAI",
     "title": "Product Manager, Integrity",
     "location": "San Francisco - Hybrid",

@@ -26,13 +26,13 @@
 <body>
     <div class="header">
         <h1>🔎 Product Management Job Dashboard</h1>
-        <p>Last updated: 2026-10-22 14:14</p>
+        <p>Last updated: 2026-10-23 13:57</p>
     </div>
     
     <div class="stats">
         <div class="stat-box">
             <h3>📊 Total Jobs</h3>
-            <h2 id="total-jobs">332</h2>
+            <h2 id="total-jobs">333</h2>
         </div>
         <div class="stat-box">
             <h3>🏢 Companies</h3>
@@ -48,19 +48,31 @@
         <div class="filter-group">
             <label for="company-filter"><strong>🏢 Filter by Company:</strong></label>
             <select id="company-filter" onchange="filterJobs()">
-                <option value="all">All Companies</option><option value="Anthropic">Anthropic (137)</option><option value="Figma">Figma (19)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (7)</option><option value="OpenAI">OpenAI (69)</option><option value="Stripe">Stripe (73)</option><option value="Vercel">Vercel (26)</option>
+                <option value="all">All Companies</option><option value="Anthropic">Anthropic (137)</option><option value="Figma">Figma (20)</option><option value="Linear">Linear (1)</option><option value="Notion">Notion (7)</option><option value="OpenAI">OpenAI (69)</option><option value="Stripe">Stripe (73)</option><option value="Vercel">Vercel (26)</option>
             </select>
         </div>
-        <div class="results-info" id="results-info">Showing all 332 jobs</div>
+        <div class="results-info" id="results-info">Showing all 333 jobs</div>
     </div>
     
     <h2>📋 Latest Jobs</h2>
     <div id="jobs-container">
 
-    <div class="job-card fresh-job" data-company="Anthropic">
+    <div class="job-card fresh-job" data-company="Figma">
+        <div class="job-title">
+            <a href="https://boards.greenhouse.io/figma/jobs/6149007004?gh_jid=6149007004" target="_blank">Manager, Product Management - Roundtripping (London, United Kingdom)</a>
+            🆕
+        </div>
+        <div class="job-meta">
+            📍 Manager, Product | 🏢 Figma | 
+            
+            🔍 Found: 2026-10-23 | Status: active
+        </div>
+    </div>
+
+    <div class="job-card" data-company="Anthropic">
         <div class="job-title">
             <a href="https://job-boards.greenhouse.io/anthropic/jobs/5457043008" target="_blank">Product Manager, Claude MarketplaceNewSan Francisco, CA | New York City, NY</a>
-            🆕
+            
         </div>
         <div class="job-meta">
             📍 Unknown | 🏢 Anthropic | 
@@ -640,18 +652,6 @@
         </div>
         <div class="job-meta">
             📍 Product Manager, ObservabilityNew | 🏢 Vercel | 
-            
-            🔍 Found: 2026-08-21 | Status: active
-        </div>
-    </div>
-
-    <div class="job-card" data-company="Anthropic">
-        <div class="job-title">
-            <a href="https://job-boards.greenhouse.io/anthropic/jobs/5393526008" target="_blank">Product Manager, Cyber SecurityNewSan Francisco, CA | New York City, NY</a>
-            
-        </div>
-        <div class="job-meta">
-            📍 Unknown | 🏢 Anthropic | 
             
             🔍 Found: 2026-08-21 | Status: active
         </div>
